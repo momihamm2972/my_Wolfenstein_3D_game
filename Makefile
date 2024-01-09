@@ -11,8 +11,9 @@ SRCS =	parsing.c \
 		./libft_utils/get_next_line.c \
 		./libft_utils/get_next_line_utils.c \
 		cub3d.c \
-		raycasting.c\
-		raycasting_utils.c\
+		raycasting.c \
+		raycasting_utils.c \
+		general_utils_0.c \
 
 OBJS = ${SRCS:.c=.o}
 CC = cc
