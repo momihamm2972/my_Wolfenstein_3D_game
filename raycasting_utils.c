@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:44:11 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/10 18:08:28 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/10 22:39:50 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	make_vue(int row, int clm, t_ray *object)
 	var[0] = 16;
 	var[1] = 8;
 	var[2] = 0;
-	object->colur = 0xFF00FF;
+	object->colur = 0x00FF3B;
 	while (var[2] < 32)
 	{
 		var[3] = 0;
@@ -75,7 +75,7 @@ void	make_square(int row, int clm, t_ray *object, t_cub3d *yous)
 	else if ((yous->map[row][clm]) == '0')
 		object->colur = 0xFFFFFF;
 	else if ((yous->map[row][clm]) == '+')
-		object->colur = 0xFF0000;
+		object->colur = 0xB200FF;
 	while (pi_x < 32)
 	{
 		pi_y = 0;

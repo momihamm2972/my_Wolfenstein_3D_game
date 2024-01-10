@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:48:58 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/10 18:35:34 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/10 22:41:21 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,10 @@ void	the_longest_line(t_cub3d *usef, t_ray *my_struct)
 
 	big_len = 0;
 	row = 0;
-	// printf ("lkmaya\n");
 	while (usef->map[row])
 	{
 		if ((int)ft_strlen (usef->map[row]) > big_len)
 			big_len = (int)ft_strlen(usef->map[row]);
-		// printf (">>>>%d\n", row);
 		row++;
 	}
 	my_struct->the_long_line = big_len;

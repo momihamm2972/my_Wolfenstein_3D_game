@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:41:58 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/10 21:38:34 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/10 22:40:59 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_is_player(char c)
 	return (0);
 }
 
-void	init_player (t_play *ready)
+void	init_player(t_play *ready)
 {
 	ready->x_play = 0;
 	ready->y_play = 0;
@@ -30,9 +30,24 @@ void	init_player (t_play *ready)
 	ready->rotation_speed = 0.0;
 }
 
+void	make_a_strahl(t_ray *obje, int row, int clm)
+{
+	int	len;
+	int	x;
+	int	y;
+
+	len = 8;
+	x = (clm * 32) + 16;
+	y = (row * 32);
+	while (len > -70)
+	{
+		mlx_pixel_put (obje->start, obje->window, x, y + len, 0xFF0000);
+		len--;
+	}
+}
+
 void	vr_game_map(t_ray *object, t_cub3d *yous_obj, t_play *parzival)
 {
-    // t_play	*parzival;
 	int		row;
 	int		clm;
 
@@ -46,19 +61,16 @@ void	vr_game_map(t_ray *object, t_cub3d *yous_obj, t_play *parzival)
 				make_square(row, clm, object, yous_obj);
 			else if (yous_obj->map[row][clm] == '+')
 				make_square (row, clm, object, yous_obj);
-			else if (check_is_player (yous_obj->map[row][clm]) == 1)
+			if (check_is_player (yous_obj->map[row][clm]) == 1)
+			{
 				make_vue (row, clm, object);
+				make_a_strahl (object, row, clm);
+			}
 			else
 				make_square (row, clm, object, yous_obj);
 			clm++;
 		}
 		row++;
 	}
-	// parzival = malloc (sizeof (t_play));
-	// init_player (parzival);
-	// printf ("#$");
-	// printf ("%d\n", parzival->turn_d);
-	// printf ("fin al9lawi\n");
-    derictions(parzival, object, yous_obj);
-	// printf ("lba7ro yatakalam\n");
+	derictions (parzival, object, yous_obj);
 }
