@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 18:26:57 by yonadry           #+#    #+#             */
-/*   Updated: 2024/01/09 11:06:19 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/10 21:36:56 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,17 @@ int main(int ac, char **av)
 {
     t_cub3d	*cub3d;
     t_ray	*strahl;
+    t_play  *parzival;
 
     if (ac == 2)
     {
         cub3d = malloc(sizeof(t_cub3d));
 		strahl = malloc (sizeof(t_ray));
-        // init_struct(cub3d);
+        parzival = malloc (sizeof(t_play));
         cub3d->file_name = check_extension(av[1]);
         read_map_elements(cub3d);
-        printf ("00\n");
-		init_strahl (strahl, cub3d);
-        printf ("01\n");
-        drawing (strahl, cub3d);
-        printf ("02\n");
-		// int i =0;
-		// while (i)
-		// 	i++;
+		init_strahl (strahl, cub3d, parzival);
+        drawing (strahl, cub3d, parzival);
         free_all(cub3d);
     }
     else
