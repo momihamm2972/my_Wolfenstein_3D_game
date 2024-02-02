@@ -23,6 +23,9 @@ CFLAGS = -Wall -Wextra -Werror
 
 all : ${NAME}
 
+%.o : %.c $(LIB)
+	$(CC) $(CFLAGS) -c $< -o $@
+
 $(NAME) : $(OBJS)
 		$(CC) $(CFLAGS) $(OBJS) $(Framework_macos)  -o $(NAME)
 

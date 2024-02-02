@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/10 22:50:12 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/02 20:43:29 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,22 @@
 # include "cub3d.h"
 # include <mlx.h>
 
+typedef struct image
+{
+	void			*mlxImage;
+	char			*dataAddr;
+	int				intPerPixl;
+	int				lenOfLine;
+	int				end;
+}	t_img;
+
+typedef struct rendData
+{
+    void	*mlx_ptr;
+    void	*win_ptr;
+    t_img	img;
+}	t_rendata;
+
 typedef struct ray
 {
 	void			*start;
@@ -23,6 +39,8 @@ typedef struct ray
 	int				colur;
 	int				the_long_line;
 	int				the_rows;
+	t_img			*myImage;
+	t_rendata		*data;
 }	t_ray;
 
 typedef struct player
