@@ -16,6 +16,7 @@ SRCS =	parsing.c \
 		general_utils_0.c \
 		from_a_binary_to_a_game.c \
 		keys_0.c \
+		imgpix.c \
 
 OBJS = ${SRCS:.c=.o}
 CC = cc

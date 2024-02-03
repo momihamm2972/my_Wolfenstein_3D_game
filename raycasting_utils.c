@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:44:11 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/10 22:39:50 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/03 20:09:07 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,9 @@ void	make_square(int row, int clm, t_ray *object, t_cub3d *yous)
 		pi_y = 0;
 		while (pi_y < 32)
 		{
-			mlx_pixel_put (object->start, object->window,
-				pi_x + izaha_x, pi_y + izaha_y, object->colur);
+			putPixImg (object->myImage, pi_x + izaha_x, pi_y + izaha_y , object->colur);
+			// mlx_pixel_put (object->start, object->window,
+			// 	pi_x + izaha_x, pi_y + izaha_y, object->colur);
 			pi_y++;
 		}
 		pi_x++;

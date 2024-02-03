@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:41:58 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/01 11:47:15 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/03 20:06:59 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,12 @@ void	vr_game_map(t_ray *object, t_cub3d *yous_obj, t_play *parzival)
 				make_vue (row, clm, object);
 				make_a_strahl (object, row, clm);
 			}
-			else
-				make_square (row, clm, object, yous_obj);
+			// else
+			// 	make_square (row, clm, object, yous_obj);
 			clm++;
 		}
 		row++;
 	}
+	mlx_put_image_to_window (object->start, object->window, object->myImage->mlxImage, 0,0);
 	derictions (parzival, object, yous_obj);
 }

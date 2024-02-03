@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:21 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/02 21:39:13 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/03 17:34:25 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	drawing(t_ray *object, t_cub3d *yous, t_play *ashly)
 			object->the_rows * 32);
 	initData(object);
 	object->myImage->dataAddr = mlx_get_data_addr (object->myImage->mlxImage, &object->myImage->intPerPixl, &object->myImage->lenOfLine, &object->myImage->end);
+	// putPixImg(object->myImage,)
 	printf ("\n!\n%s\n!\n", object->myImage->dataAddr);
 	vr_game_map (object, yous, ashly);
 	mlx_loop (object->start);

@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/02 20:43:29 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/03 20:08:57 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	the_values_of_vue(int *var, int *x_);
 void	derictions(t_play *parzival, t_ray *obje, t_cub3d *usef);
 void	init_player(t_play *ready);
 void	make_square(int row, int clm, t_ray *object, t_cub3d *yous);
+void    putPixImg(t_img *img, int x, int y, int colur);
 int		check_is_player(char c);
 int		ft_move(int events, t_play *parzival);
 float	deg2rad(float degrees);
