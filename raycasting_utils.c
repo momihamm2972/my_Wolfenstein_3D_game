@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:44:11 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/03 20:09:07 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/07 22:16:42 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,10 @@ void	make_vue(int row, int clm, t_ray *object)
 		{
 			if (var[3] == var[1])
 				var[3] += var[0];
-			mlx_pixel_put (object->start, object->window, var[3] + var[4],
-				var[2] + var[5], object->colur);
+			// mlx_pixel_put (object->start, object->window, var[3] + var[4],
+			// 	var[2] + var[5], object->colur);
+			putPixImg (object->myImage, var[3] + var[4], var[2] + var[5],
+			object->colur);
 			var[3]++;
 		}
 		var[2]++;
@@ -76,14 +78,15 @@ void	make_square(int row, int clm, t_ray *object, t_cub3d *yous)
 		object->colur = 0xFFFFFF;
 	else if ((yous->map[row][clm]) == '+')
 		object->colur = 0xB200FF;
+	else
+		object->colur = 0xFFFFFF;
 	while (pi_x < 32)
 	{
+		// printf ("dkhel\n");
 		pi_y = 0;
 		while (pi_y < 32)
 		{
 			putPixImg (object->myImage, pi_x + izaha_x, pi_y + izaha_y , object->colur);
-			// mlx_pixel_put (object->start, object->window,
-			// 	pi_x + izaha_x, pi_y + izaha_y, object->colur);
 			pi_y++;
 		}
 		pi_x++;

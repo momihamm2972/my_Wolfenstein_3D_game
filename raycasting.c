@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:21 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/03 17:34:25 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/06 20:58:36 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 void	init_strahl(t_ray *my_struct, t_cub3d *usef, t_play *play)
 {
 	my_struct->start = mlx_init ();
-	init_player (play);
+	init_player (play, usef);
 	the_longest_line (usef, my_struct);
 }
 

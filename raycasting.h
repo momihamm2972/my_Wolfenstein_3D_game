@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/03 20:08:57 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/07 22:33:56 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct ray
 	int				colur;
 	int				the_long_line;
 	int				the_rows;
+	int				rad;
 	t_img			*myImage;
 	t_rendata		*data;
 }	t_ray;
@@ -49,9 +50,9 @@ typedef struct player
 	int		y_play;
 	int		turn_d;
 	int		walk_d;
-	float	rotation_ang;
-	float	move_speed;
-	float	rotation_speed;
+	double	rotation_ang;
+	double	move_speed;
+	double	rotation_speed;
 }	t_play;
 
 /******************************** RAYCASTING **********************************/
@@ -62,13 +63,18 @@ void	the_longest_line(t_cub3d *usef, t_ray *my_struct);
 void	make_vue(int row, int clm, t_ray *object);
 void	the_values_of_vue(int *var, int *x_);
 void	derictions(t_play *parzival, t_ray *obje, t_cub3d *usef);
-void	init_player(t_play *ready);
+void	init_player(t_play *ready, t_cub3d *usef);
 void	make_square(int row, int clm, t_ray *object, t_cub3d *yous);
+// int    putPixImg(t_img *img, int x, int y, int colur);
+int    putPixStrahl(t_img *img, int x, int y, int colur, t_ray *noName);
 void    putPixImg(t_img *img, int x, int y, int colur);
+void    getCurntPosi(t_play *parzival, t_cub3d *yous);
 int		check_is_player(char c);
 int		ft_move(int events, t_play *parzival);
 float	deg2rad(float degrees);
 float	rad2deg(float radians);
+void	make_a_strahl(t_ray *obje,t_play *parzival, int row, int clm, int rad);
+void    dda(t_cub3d *usef, t_ray *strahl, t_play *parzival);
 /******************************************************************************/
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 18:26:57 by yonadry           #+#    #+#             */
-/*   Updated: 2024/01/10 21:36:56 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/07 19:59:19 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ int main(int ac, char **av)
         cub3d->file_name = check_extension(av[1]);
         read_map_elements(cub3d);
 		init_strahl (strahl, cub3d, parzival);
+        getCurntPosi(parzival, cub3d);
+        printf ("x>>%d\ty>>%d\n",parzival->x_play , parzival->y_play);
+        // dda(cub3d, strahl, parzival);
         drawing (strahl, cub3d, parzival);
         free_all(cub3d);
     }
