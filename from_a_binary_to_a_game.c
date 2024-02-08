@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:41:58 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/07 22:58:54 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/08 17:04:19 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_player(t_play *ready, t_cub3d *usef)
 	getCurntPosi (ready, usef);
 	ready->turn_d = 0;
 	ready->walk_d = 0;
-	ready->rotation_ang = 0;
+	ready->rotation_ang = M_PI;
 	ready->move_speed = 0.0;
 	ready->rotation_speed = 0.0;
 }
@@ -50,10 +50,10 @@ void	make_a_strahl(t_ray *obje,t_play *parzival, int row, int clm, int rad)
 	// y = (row * 32);
 	x = (parzival->x_play * 32) + 16;
 	y = (parzival->y_play * 32) + 16;
-	printf ("%d    -- %d\n",x, y);
-	while (len < 10)
+	printf ("%d    -- %d****%d\n",x, y, rad);
+	while (len < 100)
 	{
-		printf ("kmi >> %d\n", len);
+		// printf ("kmi >> %d\n", len);
 		// mlx_pixel_put (obje->start, obje->window, x, y, 0xFF0000);
 		// putPixStrahl(obje->myImage, x  , y  , obje->colur, obje);
 		putPixImg(obje->myImage, x  , y  , obje->colur);
@@ -109,8 +109,10 @@ void	vr_game_map(t_ray *object, t_cub3d *yous_obj, t_play *parzival)
 				// make_vue (row, clm, object);
 				make_square (row, clm, object, yous_obj);
 				object->colur = 0xEE0505;
-				dda(yous_obj, object, parzival);
-				make_a_strahl (object, parzival, row, clm, object->rad);
+				// dda(yous_obj, object, parzival);
+				// make_a_strahl (object, parzival, row, clm, object->rad);
+				printf ("knuks\n");
+				dda(object,(parzival->x_play * 32) + 16, (parzival->y_play * 32) + 16, ((parzival->x_play * 32) + 16) +cos(parzival->rotation_ang)* 30, ((parzival->y_play * 32) + 16 )+sin(parzival->rotation_ang)*30);
 				// object->colur = 0x00FF00;
 				// parzival->rotation_ang = M_PI / 2;
 				// dda(yous_obj, object, parzival);

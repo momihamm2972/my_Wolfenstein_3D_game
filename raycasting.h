@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/07 22:33:56 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/08 14:29:51 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ int		ft_move(int events, t_play *parzival);
 float	deg2rad(float degrees);
 float	rad2deg(float radians);
 void	make_a_strahl(t_ray *obje,t_play *parzival, int row, int clm, int rad);
-void    dda(t_cub3d *usef, t_ray *strahl, t_play *parzival);
+// void    dda(t_cub3d *usef, t_ray *strahl, t_play *parzival);
+void dda(t_ray *obj, double X0, double Y0, double X1, double Y1);
 /******************************************************************************/
 
 #endif
