@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 18:26:57 by yonadry           #+#    #+#             */
-/*   Updated: 2024/02/07 19:59:19 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/11 04:07:04 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,29 @@ void    free_all(t_cub3d *cub3d)
     free(cub3d);
 }
 
+void    mlxArt(t_cub3d *usef, t_ray *strahl, t_play *parzival)
+{
+    strahl->start = mlx_init ();
+    init_player (parzival, usef);
+    the_longest_line (usef, strahl);
+    getCurntPosi (parzival, usef);
+    // initData (strahl);
+    // strahl->myImage = malloc (sizeof (t_img));
+    printf ("mra\n");
+    strahl->window = mlx_new_window (strahl->start, strahl->the_long_line * 32, strahl->the_rows * 32, "MUSLIM");
+    printf ("alger\n");
+    strahl->myImage->mlxImage = mlx_new_image (strahl->start, strahl->the_long_line * 32, strahl->the_rows * 32);
+    printf ("emarat\n");
+    strahl->myImage->dataAddr = mlx_get_data_addr (strahl->myImage->mlxImage, &strahl->myImage->intPerPixl, &strahl->myImage->lenOfLine, &strahl->myImage->end);
+    ft_draw (strahl, usef, parzival);
+    // printf("p1 >>>>>>>>>> [%p]\n", strahl->myImage);
+	// printf("p2 >>>>>>>>>> [%p]\n", strahl->myImage->mlxImage);
+	// exit(1);
+    mlx_hook (strahl->window, 2, 0, ft_move, strahl);
+	mlx_hook (strahl->window, 17, 0, close_the_win, NULL);
+    mlx_loop (strahl->start);
+}
+
 int main(int ac, char **av)
 {
     t_cub3d	*cub3d;
@@ -34,15 +57,23 @@ int main(int ac, char **av)
         cub3d = malloc(sizeof(t_cub3d));
 		strahl = malloc (sizeof(t_ray));
         parzival = malloc (sizeof(t_play));
+        strahl->myImage = malloc (sizeof (t_img));
         cub3d->file_name = check_extension(av[1]);
         read_map_elements(cub3d);
-		init_strahl (strahl, cub3d, parzival);
-        getCurntPosi(parzival, cub3d);
-        printf ("x>>%d\ty>>%d\n",parzival->x_play , parzival->y_play);
-        // dda(cub3d, strahl, parzival);
-        drawing (strahl, cub3d, parzival);
+        mlxArt (cub3d, strahl, parzival);
+		// init_strahl (strahl, cub3d, parzival);
+        // getCurntPosi(parzival, cub3d);
+        // printf ("Kmix>>%d\ty>>%d\n",parzival->x_play , parzival->y_play);
+        // drawing (strahl, cub3d, parzival);
+        // derictions (parzival, strahl, cub3d);
+        // printf ("cristal\n");
+        // if (whileMoving(parzival) == -1)
+        //     printf ("update\n");
+        // else
+        //     printf ("smoock\n");
+        // mlx_loop (strahl->start);
         free_all(cub3d);
     }
     else
-		ft_putstr("Error\nPlease input a valid argument");
+		ft_putstr("Error\nPlease input a valid argument"); 
 }

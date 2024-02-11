@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:44:11 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/07 22:16:42 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/11 01:06:40 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,18 @@ void	make_square(int row, int clm, t_ray *object, t_cub3d *yous)
 	int	pi_y;
 	int	izaha_x;
 	int	izaha_y;
+	int	tabita;
 
 	pi_x = 0;
 	izaha_x = clm * 32;
 	izaha_y = row * 32;
+	tabita = 32;
+	if (check_is_player (yous->map[row][clm]) == 1)
+	{
+		tabita = 8;
+		izaha_x += 12;
+		izaha_y += 12;
+	}
 	if (yous->map[row][clm] == '1')
 		object->colur = 0x005EFF;
 	else if ((yous->map[row][clm]) == '0')
@@ -80,15 +88,24 @@ void	make_square(int row, int clm, t_ray *object, t_cub3d *yous)
 		object->colur = 0xB200FF;
 	else
 		object->colur = 0xFFFFFF;
-	while (pi_x < 32)
+	while (pi_x < tabita)
 	{
-		// printf ("dkhel\n");
 		pi_y = 0;
-		while (pi_y < 32)
+		while (pi_y < tabita)
 		{
 			putPixImg (object->myImage, pi_x + izaha_x, pi_y + izaha_y , object->colur);
 			pi_y++;
 		}
 		pi_x++;
 	}
+}
+
+int	whileMoving(t_play *bayren)
+{
+	if (bayren->turn_d != 0 || bayren->walk_d != 0)
+	{
+		printf ("UK\n");
+		return (-1);
+	}
+	return (0);
 }
