@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:44:11 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/11 01:06:40 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/11 20:29:31 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	make_vue(int row, int clm, t_ray *object)
 	}
 }
 
-void	make_square(int row, int clm, t_ray *object, t_cub3d *yous)
+void	make_square(int row, int clm, t_ray *object)
 {
 	int	pi_x;
 	int	pi_y;
@@ -74,17 +74,17 @@ void	make_square(int row, int clm, t_ray *object, t_cub3d *yous)
 	izaha_x = clm * 32;
 	izaha_y = row * 32;
 	tabita = 32;
-	if (check_is_player (yous->map[row][clm]) == 1)
+	if (check_is_player (object->gameMap[row][clm]) == 1)
 	{
 		tabita = 8;
 		izaha_x += 12;
 		izaha_y += 12;
 	}
-	if (yous->map[row][clm] == '1')
+	if (object->gameMap[row][clm] == '1')
 		object->colur = 0x005EFF;
-	else if ((yous->map[row][clm]) == '0')
+	else if ((object->gameMap[row][clm]) == '0')
 		object->colur = 0xFFFFFF;
-	else if ((yous->map[row][clm]) == '+')
+	else if ((object->gameMap[row][clm]) == '+')
 		object->colur = 0xB200FF;
 	else
 		object->colur = 0xFFFFFF;

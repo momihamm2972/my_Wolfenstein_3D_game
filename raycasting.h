@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/11 04:06:06 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/11 20:30:56 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct ray
 {
 	void			*start;
 	void			*window;
+	char			**gameMap;
 	int				colur;
 	int				the_long_line;
 	int				the_rows;
@@ -66,7 +67,7 @@ void	make_vue(int row, int clm, t_ray *object);
 void	the_values_of_vue(int *var, int *x_);
 void	derictions(t_play *parzival, t_ray *obje, t_cub3d *usef);
 void	init_player(t_play *ready, t_cub3d *usef);
-void	make_square(int row, int clm, t_ray *object, t_cub3d *yous);
+// void	make_square(int row, int clm, t_ray *object, t_cub3d *yous);
 // int    putPixImg(t_img *img, int x, int y, int colur);
 int    putPixStrahl(t_img *img, int x, int y, int colur, t_ray *noName);
 void    putPixImg(t_img *img, int x, int y, int colur);
@@ -80,7 +81,7 @@ void	make_a_strahl(t_ray *obje,t_play *parzival, int row, int clm, int rad);
 // void    dda(t_cub3d *usef, t_ray *strahl, t_play *parzival);
 void dda(t_ray *obj, double X0, double Y0, double X1, double Y1);
 void	updateTheGame(t_ray *obj, t_cub3d *usef, t_play *parzival);
-void	ft_draw (t_ray *object, t_cub3d *yous_obj, t_play *parzival);
+void	ft_draw (t_ray *object, t_play *parzival);
 void	initData(t_ray *obj);
 
 
@@ -90,7 +91,8 @@ void    mlxArt(t_cub3d *usef, t_ray *strahl, t_play *parzival);
 int	close_the_win(void);
 void	makeValus(t_play *blanka);
 // int	ft_move(int events, t_play *parzival, t_ray *obj);
-int	ft_move(int events, t_ray *obj);
+int	ft_move(int events, void *object);
+void	make_square(int row, int clm, t_ray *object);
 /******************************************************************************/
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:41:58 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/11 01:31:16 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/11 20:30:32 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,24 @@ void	init_player(t_play *ready, t_cub3d *usef)
 }
 
 
-void	ft_draw (t_ray *object, t_cub3d *yous_obj, t_play *parzival)
+void	ft_draw (t_ray *object, t_play *parzival)
 {
 	int		row;
 	int		clm;
 printf ("start drawing\n");
 	row = 0;
-	while (yous_obj->map[row])
+	while (object->gameMap[row])
 	{
 		clm = 0;
-		while (yous_obj->map[row][clm])
+		while (object->gameMap[row][clm])
 		{
-			if (yous_obj->map[row][clm] == '1')
-				make_square(row, clm, object, yous_obj);
-			else if (yous_obj->map[row][clm] == '+')
-				make_square (row, clm, object, yous_obj);
-			if (check_is_player (yous_obj->map[row][clm]) == 1)
+			if (object->gameMap[row][clm] == '1')
+				make_square(row, clm, object);
+			else if (object->gameMap[row][clm] == '+')
+				make_square (row, clm, object);
+			if (check_is_player (object->gameMap[row][clm]) == 1)
 			{
-				make_square (row, clm, object, yous_obj);
+				make_square (row, clm, object);
 				object->colur = 0xEE0505;
 				dda(object,(parzival->x_play * 32) + 16, (parzival->y_play * 32) + 16, ((parzival->x_play * 32) + 16) +cos(parzival->rotation_ang)* 40, ((parzival->y_play * 32) + 16 )+sin(parzival->rotation_ang)*40);
 			}
