@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/11 20:30:56 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/12 00:07:59 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	makeValus(t_play *blanka);
 // int	ft_move(int events, t_play *parzival, t_ray *obj);
 int	ft_move(int events, void *object);
 void	make_square(int row, int clm, t_ray *object);
+void	ft_again (t_ray *obj);
 /******************************************************************************/
 
 #endif

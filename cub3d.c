@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 18:26:57 by yonadry           #+#    #+#             */
-/*   Updated: 2024/02/11 20:31:19 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/11 23:48:27 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,21 @@ void    mlxArt(t_cub3d *usef, t_ray *strahl, t_play *parzival)
     getCurntPosi (parzival, usef);
     // initData (strahl);
     // strahl->myImage = malloc (sizeof (t_img));
-    printf ("mra\n");
+    // printf ("mra\n");
     strahl->window = mlx_new_window (strahl->start, strahl->the_long_line * 32, strahl->the_rows * 32, "MUSLIM");
-    printf ("alger\n");
+    // printf ("alger\n");
     strahl->myImage->mlxImage = mlx_new_image (strahl->start, strahl->the_long_line * 32, strahl->the_rows * 32);
-    printf ("emarat\n");
+    // printf ("emarat\n");
     strahl->myImage->dataAddr = mlx_get_data_addr (strahl->myImage->mlxImage, &strahl->myImage->intPerPixl, &strahl->myImage->lenOfLine, &strahl->myImage->end);
     ft_draw (strahl, parzival);
-    printf("p1 >>>>>>>>>> [%p]\n", strahl->myImage);
-	printf("p2 >>>>>>>>>> [%p]\n", strahl->myImage->mlxImage);
-    printf ("every day11\n");
+    // printf("p1 >>>>>>>>>> [%p]\n", strahl->myImage);
+	// printf("p2 >>>>>>>>>> [%p]\n", strahl->myImage->mlxImage);
+    // printf ("every day11\n");
 	// exit(1);
     mlx_hook (strahl->window, 2, 0, ft_move, strahl);
-    printf ("every dayethwthwrthj1\n");
-	// mlx_hook (strahl->window, 17, 0, close_the_win, NULL);
-    printf ("every dayyyyyyyyyyyyyyyyyy\n");
+    // printf ("every dayethwthwrthj1\n");
+	mlx_hook (strahl->window, 17, 0, close_the_win, NULL);
+    // printf ("every dayyyyyyyyyyyyyyyyyy\n");
     mlx_loop (strahl->start);
 }
 
