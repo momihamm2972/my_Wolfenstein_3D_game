@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/12 00:07:59 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/13 02:26:45 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct image
 
 typedef struct player
 {
-	int		x_play;
-	int		y_play;
+	double		x_play;
+	double		y_play;
 	int		turn_d;
 	int		walk_d;
 	double	rotation_ang;

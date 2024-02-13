@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:41:58 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/12 02:07:25 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/13 19:12:52 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	init_player(t_play *ready, t_cub3d *usef)
 	ready->turn_d = 0;
 	ready->walk_d = 0;
 	ready->rotation_ang = M_PI;
-	ready->move_speed = 2.0;
+	ready->move_speed = 6.0;
 	ready->rotation_speed = 2 * (M_PI / 180);
 }
 
@@ -80,7 +80,7 @@ void	ft_again (t_ray *obj)
 	// putPixImg (obj->myImage, (obj->playstation->x_play * 32) + 17, (obj->playstation->y_play * 32) + 12, obj->colur);
 	// putPixImg (obj->myImage, (obj->playstation->x_play * 32) + 18, (obj->playstation->y_play * 32) + 12, obj->colur);
 	// putPixImg (obj->myImage, (obj->playstation->x_play * 32) + 19, (obj->playstation->y_play * 32) + 12, obj->colur);
-	obj->colur = 0xEE0505;
+	obj->colur = 0xFFFFFF;
 	dda(obj,(obj->playstation->x_play * 32) + 16, (obj->playstation->y_play * 32) + 16, ((obj->playstation->x_play * 32) + 16) +cos(obj->playstation->rotation_ang)* 40, ((obj->playstation->y_play * 32) + 16 )+sin(obj->playstation->rotation_ang)*40);
 	mlx_put_image_to_window (obj->start, obj->window, obj->myImage->mlxImage, 0 , 0);
 }

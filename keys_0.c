@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:28:57 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/12 02:02:22 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/13 19:11:14 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,23 @@ int	close_the_win(void)
 
 void	makeValus(t_play *blanka)
 {
-	int	moveStep;
+	double	moveStep;
 
 	// printf ("every day00\n");
 	// printf ("***{%p}***\n", blanka);
 	blanka->rotation_speed = 2 * (M_PI / 180);
-	// printf ("every day22\n");
+	printf ("rome %d speed %f\n", blanka->turn_d, blanka->rotation_speed);
+	printf ("every day22   ** %f\n",blanka->rotation_speed);
 	blanka->rotation_ang += blanka->turn_d * blanka->rotation_speed;
+	printf ("every day33   ** %f\n",blanka->rotation_speed);
 	// printf ("every day33\n");
-	printf ("wach %d wesel %d lhna\n", blanka->x_play, blanka->y_play);
-	moveStep = blanka->walk_d * blanka->move_speed;
-	printf ("dolly %d  ** %d *** %f\n", moveStep, blanka->walk_d, blanka->move_speed);
+	printf ("wach %f wesel %f lhna\n", blanka->x_play, blanka->y_play);
+	moveStep = blanka->walk_d * blanka->move_speed / 16;
+	printf ("dolly %f  ** %d *** %f\n", moveStep, blanka->walk_d, blanka->move_speed);
 	blanka->x_play += cos(blanka->rotation_ang) * moveStep; 
 	blanka->y_play += sin(blanka->rotation_ang) * moveStep; 
 	printf ("wach wesel lhna\n");
-	printf ("wach %d wesel %d lhna %f \n\n\n\n\n", blanka->x_play, blanka->y_play, cos(blanka->rotation_ang) * moveStep);
+	printf ("wach %f wesel %f lhna %f \n\n\n\n\n", blanka->x_play, blanka->y_play, cos(blanka->rotation_ang) * moveStep);
 }
 
 void	resetVal(t_ray *obj)
