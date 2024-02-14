@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 18:26:57 by yonadry           #+#    #+#             */
-/*   Updated: 2024/02/14 00:48:21 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/14 08:15:54 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,20 @@ void    mlxArt(t_cub3d *usef, t_ray *strahl, t_play *parzival)
     the_longest_line (usef, strahl);
     getCurntPosi (parzival, usef);
     // initData (strahl);
-    // strahl->myImage = malloc (sizeof (t_img));
+    // strahl->my_image = malloc (sizeof (t_img));
     // printf ("mra\n");
     strahl->window = mlx_new_window (strahl->start, strahl->the_long_line * 32, strahl->the_rows * 32, "MUSLIM");
     // printf ("alger\n");
-    strahl->myImage->mlxImage = mlx_new_image (strahl->start, strahl->the_long_line * 32, strahl->the_rows * 32);
+    strahl->my_image->mlx_img = mlx_new_image (strahl->start, strahl->the_long_line * 32, strahl->the_rows * 32);
     // printf ("emarat\n");
-    strahl->myImage->dataAddr = mlx_get_data_addr (strahl->myImage->mlxImage, &strahl->myImage->intPerPixl, &strahl->myImage->lenOfLine, &strahl->myImage->end);
+    strahl->my_image->data_addr = mlx_get_data_addr (strahl->my_image->mlx_img, &strahl->my_image->intperpixl, &strahl->my_image->lenofline, &strahl->my_image->end);
     ft_draw (strahl, parzival);
-    // printf("p1 >>>>>>>>>> [%p]\n", strahl->myImage);
-	// printf("p2 >>>>>>>>>> [%p]\n", strahl->myImage->mlxImage);
+    // printf("p1 >>>>>>>>>> [%p]\n", strahl->my_image);
+	// printf("p2 >>>>>>>>>> [%p]\n", strahl->my_image->mlx_img);
     // printf ("every day11\n");
 	// exit(1);
     mlx_hook (strahl->window, 2, 0L, ft_move, strahl);
-    mlx_hook (strahl->window, 3, 0L, ftMoveR, strahl);
+    mlx_hook (strahl->window, 3, 0L, ft_mover, strahl);
     mlx_loop_hook(strahl->start, ft_again  , strahl);
     // printf ("every dayethwthwrthj1\n");
 	mlx_hook (strahl->window, 17, 0, close_the_win, NULL);
@@ -61,20 +61,20 @@ int main(int ac, char **av)
     {
         cub3d = malloc(sizeof(t_cub3d));
 		strahl = malloc (sizeof(t_ray));
-        strahl->playstation = malloc (sizeof(t_play));
-        strahl->myImage = malloc (sizeof (t_img));
+        strahl->plays = malloc (sizeof(t_play));
+        strahl->my_image = malloc (sizeof (t_img));
         // ###########################;
         cub3d->file_name = check_extension(av[1]);
         read_map_elements(cub3d);
-        strahl->gameMap = cub3d->map;
+        strahl->game_map = cub3d->map;
         int i =0;
         // int j =0;
-        while (strahl->gameMap[i])
+        while (strahl->game_map[i])
         {
-            printf ("**%s**\n", strahl->gameMap[i]);
+            printf ("**%s**\n", strahl->game_map[i]);
             i++;
         }
-        mlxArt (cub3d, strahl, strahl->playstation);
+        mlxArt (cub3d, strahl, strahl->plays);
 		// init_strahl (strahl, cub3d, parzival);
         // getCurntPosi(parzival, cub3d);
         // printf ("Kmix>>%d\ty>>%d\n",parzival->x_play , parzival->y_play);
