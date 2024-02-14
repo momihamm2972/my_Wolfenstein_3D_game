@@ -19,6 +19,7 @@ SRCS =	parsing.c \
 		imgpix.c \
 		dda.c \
 		ddaUtils.c \
+		binary_game.c \
 
 OBJS = ${SRCS:.c=.o}
 CC = cc

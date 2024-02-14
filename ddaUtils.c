@@ -6,13 +6,13 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 19:41:21 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/14 02:41:07 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/14 10:18:31 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-void    getCurntPosi(t_play *parzival, t_cub3d *yous)
+void	get_curnt_posi(t_play *parzival, t_cub3d *yous)
 {
 	int	row;
 	int	clm;
@@ -28,17 +28,10 @@ void    getCurntPosi(t_play *parzival, t_cub3d *yous)
 				parzival->x_play = clm;
 				parzival->y_play = row;
 				return ;
-			} 
+			}
 			clm++;
 		}
 		row++;
 	}
 	return ;
 }
-void	relesKey()
-{
-	// make vars to 0;
-}
-// TODO:
-	// new x = old x + (cos (rotationangle + theLenghtOfLine);
-	// new y = old y + (sin (rotationangle +  theLenghtOfLine);
