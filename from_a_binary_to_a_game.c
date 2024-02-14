@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:41:58 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/13 19:12:52 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/14 01:41:33 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,21 @@ void	init_player(t_play *ready, t_cub3d *usef)
 	ready->turn_d = 0;
 	ready->walk_d = 0;
 	ready->rotation_ang = M_PI;
-	ready->move_speed = 6.0;
-	ready->rotation_speed = 2 * (M_PI / 180);
+	ready->move_speed = 4.0;
+	ready->rotation_speed = 2 * (M_PI / 45);
 }
 
-void	ft_again (t_ray *obj)
+int	ft_again (t_ray *obj)
 {
 	int		row;
 	int		clm;
 
 	row = 0;
+	mlx_destroy_image (obj->start, obj->myImage->mlxImage);
+	mlx_clear_window (obj->start, obj->window);
+	obj->myImage->mlxImage = mlx_new_image (obj->start, obj->the_long_line * 32, obj->the_rows * 32);
+	obj->myImage->dataAddr = mlx_get_data_addr (obj->myImage->mlxImage, &obj->myImage->intPerPixl, &obj->myImage->lenOfLine, &obj->myImage->end);
+	makeValus(obj->playstation);
 	while (obj->gameMap[row])
 	{
 		clm = 0;
@@ -44,12 +49,6 @@ void	ft_again (t_ray *obj)
 				make_square(row, clm, obj);
 			else if (obj->gameMap[row][clm] == '+')
 				make_square (row, clm, obj);
-			// if (check_is_player (object->gameMap[row][clm]) == 1)
-			// {
-			// 	make_square (row, clm, object);
-			// 	object->colur = 0xEE0505;
-			// 	dda(object,(parzival->x_play * 32) + 16, (parzival->y_play * 32) + 16, ((parzival->x_play * 32) + 16) +cos(parzival->rotation_ang)* 40, ((parzival->y_play * 32) + 16 )+sin(parzival->rotation_ang)*40);
-			// }
 			clm++;
 		}
 		row++;
@@ -80,9 +79,16 @@ void	ft_again (t_ray *obj)
 	// putPixImg (obj->myImage, (obj->playstation->x_play * 32) + 17, (obj->playstation->y_play * 32) + 12, obj->colur);
 	// putPixImg (obj->myImage, (obj->playstation->x_play * 32) + 18, (obj->playstation->y_play * 32) + 12, obj->colur);
 	// putPixImg (obj->myImage, (obj->playstation->x_play * 32) + 19, (obj->playstation->y_play * 32) + 12, obj->colur);
-	obj->colur = 0xFFFFFF;
+	// obj->colur = 0xFFFFFF;
 	dda(obj,(obj->playstation->x_play * 32) + 16, (obj->playstation->y_play * 32) + 16, ((obj->playstation->x_play * 32) + 16) +cos(obj->playstation->rotation_ang)* 40, ((obj->playstation->y_play * 32) + 16 )+sin(obj->playstation->rotation_ang)*40);
 	mlx_put_image_to_window (obj->start, obj->window, obj->myImage->mlxImage, 0 , 0);
+	// mlx_clear_window (obj->start, obj->window);
+	// mlx_destroy_image (obj->start, obj->myImage->mlxImage);
+	// obj->myImage->mlxImage = mlx_new_image (obj->start, obj->the_long_line * 32, obj->the_rows * 32);
+	// obj->myImage->dataAddr = mlx_get_data_addr (obj->myImage->mlxImage, &obj->myImage->intPerPixl, &obj->myImage->lenOfLine, &obj->myImage->end);
+	// // ft_draw (obj, obj->playstation);
+	// ft_again (obj);
+	return (0);
 }
 
 

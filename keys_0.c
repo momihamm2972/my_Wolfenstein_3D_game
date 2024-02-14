@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:28:57 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/13 19:11:14 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/14 00:59:49 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	makeValus(t_play *blanka)
 
 	// printf ("every day00\n");
 	// printf ("***{%p}***\n", blanka);
-	blanka->rotation_speed = 2 * (M_PI / 180);
+	// blanka->rotation_speed = 2 * (M_PI / 180);
 	printf ("rome %d speed %f\n", blanka->turn_d, blanka->rotation_speed);
 	printf ("every day22   ** %f\n",blanka->rotation_speed);
 	blanka->rotation_ang += blanka->turn_d * blanka->rotation_speed;
@@ -46,56 +46,169 @@ void	makeValus(t_play *blanka)
 
 void	resetVal(t_ray *obj)
 {
-	obj->playstation->turn_d = 0;
+	// if (obj->playstation->walk_d != 0)
+		obj->playstation->turn_d = 0;
 	obj->playstation->walk_d = 0;
 }
 
-int	ft_move(int events, void *object)
+int	ftMoveR(int events, void *object)
 {
-	// (void) obj;
-	// (t_ray *) obj;
-	t_ray *obj = (t_ray *) object;
-	// printf ("#%p#\n", obj->playstation);
-	// printf ("#%d#\n", obj->myImage->lenOfLine);
-	// obj->playstation->turn_d = 0;
-	// obj->playstation->walk_d = 0;
-	// parzival->walk_d = 0;
+	t_ray	*obj = (t_ray *)object;
 	if (events == 53)
 		close_the_win ();
-	else if (events == 124 || events == 2)
+	if (events == 124 || events == 2)
 	{
-		obj->playstation->turn_d = 1;
-		printf ("1\n");
+		obj->playstation->turn_d = 0;
+		// obj->playstation->walk_d = 0;
+		printf ("R\n");
 	}
-	else if (events == 123 || events == 0)
-		obj->playstation->turn_d = -1;
-	else if (events == 126 || events == 13)
-		obj->playstation->walk_d = 1;
-	else if (events == 125 || events == 1)
-		obj->playstation->walk_d = -1;
-	else
-		return (0);
-	// Update
-	// printf ("seg\n");
-	makeValus(obj->playstation);
-	// printf ("seg0000 ===== \n");
-	// printf("p1 >>>>>>>>>> [%p]\n", obj->myImage);
-	// printf("p2 >>>>>>>>>> [%p]\n", obj->myImage->mlxImage);
-	// exit(1);
-	// if (obj->myImage->mlxImage == NULL)
-	// 	printf ("werda\n");
-	// else
-	// 	printf ("kani m\n");
-	mlx_clear_window (obj->start, obj->window);
-	mlx_destroy_image (obj->start, obj->myImage->mlxImage);
-	obj->myImage->mlxImage = mlx_new_image (obj->start, obj->the_long_line * 32, obj->the_rows * 32);
-	obj->myImage->dataAddr = mlx_get_data_addr (obj->myImage->mlxImage, &obj->myImage->intPerPixl, &obj->myImage->lenOfLine, &obj->myImage->end);
-	// ft_draw (obj, obj->playstation);
-	ft_again (obj);
-	resetVal(object);
-	// printf ("seg1111111\n");
+	if (events == 123 || events == 0)
+	{
+		obj->playstation->turn_d = 0;
+		// obj->playstation->walk_d = 0;
+		printf ("R\n");
+	}
+	if (events == 126 || events == 13)
+	{
+		obj->playstation->walk_d = 0;
+		// obj->playstation->turn_d = 0;
+		printf ("R\n");
+	}
+	if (events == 125 || events == 1)
+	{
+		obj->playstation->walk_d = 0;
+		// obj->playstation->turn_d = 0;
+		printf ("R\n");
+	}
 	return (0);
 }
+// {
+// 	t_ray	*obj = (t_ray *)object;
+// 	if (events == 53)
+// 		close_the_win ();
+// 	if (events == 124 || events == 2)
+// 	{
+// 		obj->playstation->turn_d = 0;
+// 		// obj->playstation->walk_d = 0;
+// 		printf ("1\n");
+// 	}
+// 	if (events == 123 || events == 0)
+// 	{
+// 		obj->playstation->turn_d = 0;
+// 		// obj->playstation->walk_d = 0;
+// 	}
+// 	if (events == 126 || events == 13)
+// 	{
+// 		obj->playstation->walk_d = 0;
+// 		// obj->playstation->turn_d = 0;
+// 	}
+// 	if (events == 125 || events == 1)
+// 	{
+// 		obj->playstation->walk_d = 0;
+// 		// obj->playstation->turn_d = 0;
+// 	}
+// 	// else
+// 	// 	return (0);
+// 	makeValus(obj->playstation);
+// 	mlx_clear_window (obj->start, obj->window);
+// 	mlx_destroy_image (obj->start, obj->myImage->mlxImage);
+// 	obj->myImage->mlxImage = mlx_new_image (obj->start, obj->the_long_line * 32, obj->the_rows * 32);
+// 	obj->myImage->dataAddr = mlx_get_data_addr (obj->myImage->mlxImage, &obj->myImage->intPerPixl, &obj->myImage->lenOfLine, &obj->myImage->end);
+// 	// ft_draw (obj, obj->playstation);
+// 	ft_again (obj);
+// 	// resetVal(object);
+// 	// printf ("seg1111111\n");
+// 	return (0);
+// }
+
+int	ft_move(int events, void *object)
+{
+		t_ray *obj = (t_ray *) object;
+	if (events == 53)
+		close_the_win ();
+	if (events == 124 || events == 2)
+	{
+		obj->playstation->turn_d = 1;
+		// obj->playstation->walk_d = 0;
+		printf ("P\n");
+	}
+	if (events == 123 || events == 0)
+	{
+		obj->playstation->turn_d = -1;
+		// obj->playstation->walk_d = 0;
+		printf ("P\n");
+	}
+	if (events == 126 || events == 13)
+	{
+		obj->playstation->walk_d = 1;
+		printf ("P\n");
+		// obj->playstation->turn_d = 0;
+	}
+	if (events == 125 || events == 1)
+	{
+		obj->playstation->walk_d = -1;
+		printf ("P\n");
+		// obj->playstation->turn_d = 0;
+	}
+	return (0);
+}
+// {
+// 	// (void) obj;
+// 	// (t_ray *) obj;
+// 	t_ray *obj = (t_ray *) object;
+// 	// printf ("#%p#\n", obj->playstation);
+// 	// printf ("#%d#\n", obj->myImage->lenOfLine);
+// 	// obj->playstation->turn_d = 0;
+// 	// obj->playstation->walk_d = 0;
+// 	// parzival->walk_d = 0;
+// 	if (events == 53)
+// 		close_the_win ();
+// 	if (events == 124 || events == 2)
+// 	{
+// 		obj->playstation->turn_d = 1;
+// 		// obj->playstation->walk_d = 0;
+// 		printf ("1\n");
+// 	}
+// 	if (events == 123 || events == 0)
+// 	{
+// 		obj->playstation->turn_d = -1;
+// 		// obj->playstation->walk_d = 0;
+// 	}
+// 	if (events == 126 || events == 13)
+// 	{
+// 		obj->playstation->walk_d = 1;
+// 		// obj->playstation->turn_d = 0;
+// 	}
+// 	if (events == 125 || events == 1)
+// 	{
+// 		obj->playstation->walk_d = -1;
+// 		// obj->playstation->turn_d = 0;
+// 	}
+// 	// else
+// 	// 	return (0);
+// 	// if (events != 124 || events != 2 || events != 123 || events !=0 || events != 126 || events !=13 || events != 125 || events !=1)
+// 	// 	return (0);
+// 	// Update
+// 	// printf ("seg\n");
+// 	makeValus(obj->playstation);
+// 	// printf ("seg0000 ===== \n");
+// 	// printf("p1 >>>>>>>>>> [%p]\n", obj->myImage);
+// 	// printf("p2 >>>>>>>>>> [%p]\n", obj->myImage->mlxImage);
+// 	// exit(1);
+// 	// if (obj->myImage->mlxImage == NULL)
+// 	// 	printf ("werda\n");
+// 	// else
+// 	// 	printf ("kani m\n");
+// 	mlx_clear_window (obj->start, obj->window);
+// 	mlx_destroy_image (obj->start, obj->myImage->mlxImage);
+// 	obj->myImage->mlxImage = mlx_new_image (obj->start, obj->the_long_line * 32, obj->the_rows * 32);
+// 	obj->myImage->dataAddr = mlx_get_data_addr (obj->myImage->mlxImage, &obj->myImage->intPerPixl, &obj->myImage->lenOfLine, &obj->myImage->end);
+// 	// ft_draw (obj, obj->playstation);
+// 	ft_again (obj);
+// 	resetVal(object);
+// 	// printf ("seg1111111\n");
+// 	return (0);
+// }
 
 void	derictions(t_play *parzival, t_ray *obje, t_cub3d *usef)
 {

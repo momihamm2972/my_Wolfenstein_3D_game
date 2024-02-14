@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 18:26:57 by yonadry           #+#    #+#             */
-/*   Updated: 2024/02/11 23:48:27 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/14 00:48:21 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ void    mlxArt(t_cub3d *usef, t_ray *strahl, t_play *parzival)
 	// printf("p2 >>>>>>>>>> [%p]\n", strahl->myImage->mlxImage);
     // printf ("every day11\n");
 	// exit(1);
-    mlx_hook (strahl->window, 2, 0, ft_move, strahl);
+    mlx_hook (strahl->window, 2, 0L, ft_move, strahl);
+    mlx_hook (strahl->window, 3, 0L, ftMoveR, strahl);
+    mlx_loop_hook(strahl->start, ft_again  , strahl);
     // printf ("every dayethwthwrthj1\n");
 	mlx_hook (strahl->window, 17, 0, close_the_win, NULL);
     // printf ("every dayyyyyyyyyyyyyyyyyy\n");
