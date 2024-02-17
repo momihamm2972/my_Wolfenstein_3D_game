@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:41:58 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/14 10:18:34 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/16 05:15:03 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,17 @@
 int	check_is_player(char c)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+	{
+		// if (c == 'N')
+		// 	printf ("NNNNNNNNNNNN\n");
+		// if (c == 'S')
+		// 	printf ("SSSSSSSSSSSSS\n");
+		// if (c == 'E')
+		// 	printf ("EEEEEEEEEEEEEE\n");
+		// if (c == 'W')
+		// 	printf ("WWWWWWWWWWWWWWWWWWWWW\n");
 		return (1);
+	}
 	return (0);
 }
 
@@ -25,8 +35,10 @@ void	init_player(t_play *ready, t_cub3d *usef)
 	ready->turn_d = 0;
 	ready->walk_d = 0;
 	ready->rot_ang = M_PI;
-	ready->move_speed = 4.0;
-	ready->rotation_speed = 2 * (M_PI / 45);
+	ready->move_speed = 2.0;
+	ready->rotation_speed = 2 * (M_PI / 90);
+	// ready->player_xx = 0;
+	// ready->player_yy = 0;
 }
 
 int	ft_again(t_ray *obj)

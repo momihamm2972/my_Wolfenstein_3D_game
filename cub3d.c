@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 18:26:57 by yonadry           #+#    #+#             */
-/*   Updated: 2024/02/14 10:18:24 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/16 04:05:30 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	mlx_art(t_cub3d *usef, t_ray *strahl, t_play *parzival)
 			&strahl->my_image->intperpixl, &strahl->my_image->lenofline,
 			&strahl->my_image->end);
 	ft_draw (strahl, parzival);
+	// sleep (10);
 	mlx_hook (strahl->window, 2, 0, ft_move, strahl);
 	mlx_hook (strahl->window, 3, 0, ft_mover, strahl);
 	mlx_loop_hook(strahl->start, ft_again, strahl);
