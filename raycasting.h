@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/16 03:03:38 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:04:19 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ typedef struct player
 	int			turn_d;
 	int			walk_d;
 	double		x_play;
-	// double		player_xx;
-	// double		player_yy;
+	double		x_pixels;
+	double		y_pixels;
 	double		y_play;
 	double		rot_ang;
 	double		move_speed;
@@ -69,8 +69,6 @@ typedef struct ray
 
 /******************************** RAYCASTING **********************************/
 void	the_longest_line(t_cub3d *usef, t_ray *my_struct);
-// void	make_vue(int row, int clm, t_ray *object);
-void	the_values_of_vue(int *var, int *x_);
 void	init_player(t_play *ready, t_cub3d *usef);
 void	put_pix_img(t_img *img, int x, int y, int colur);
 void	get_curnt_posi(t_play *parzival, t_cub3d *yous);
@@ -79,16 +77,14 @@ void	ft_draw(t_ray *object, t_play *parzival);
 void	mlx_art(t_cub3d *usef, t_ray *strahl, t_play *parzival);
 void	make_valus(t_play *blanka, t_ray *obj);
 void	make_square(int row, int clm, t_ray *object);
+void	draw_line(t_ray *obj);
+void	creat_img(t_ray *obj);
 int		check_is_player(char c);
-int		whileMoving(t_play *bayren);
 int		close_the_win(void);
 int		ft_move(int events, void *object);
 int		ft_again(t_ray *obj);
 int		ft_mover(int events, void *object);
-void	draw_line(t_ray *obj);
-void	creat_img(t_ray *obj);
-void	new_posi(t_ray *parzi);
-int	is_wall(t_ray *obj, double x, double y);
+int		is_wall(t_ray *obj, double x, double y);
 /******************************************************************************/
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 17:19:57 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/16 03:20:29 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:18:41 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	put_pix_img(t_img *img, int x, int y, int colur)
 {
 	char	*puting;
-	// printf ("*********************\n");
 
 	puting = img->data_addr + (y * img->lenofline + x * (img->intperpixl / 8));
 	*(int *) puting = colur;

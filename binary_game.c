@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 09:39:39 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/14 11:08:26 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:27:07 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ void	draw_line(t_ray *obj)
 	int	val;
 
 	x = 0;
-	val = 12;
-	while (x < 8)
+	val = 0;
+	while (x < 9)
 	{
 		y = 0;
-		var = 12;
-		while (y < 8)
+		var = 0;
+		while (y < 9)
 		{
-			put_pix_img (obj->my_image, (obj->plays->x_play * 32) + var,
-				(obj->plays->y_play * 32) + val, obj->colur);
+			put_pix_img (obj->my_image, (obj->plays->x_play + 12) + var,
+				(obj->plays->y_play + 12) + val, obj->colur);
 			y++;
 			var++;
 		}
@@ -36,8 +36,8 @@ void	draw_line(t_ray *obj)
 		val++;
 	}
 	dda(obj,
-		((obj->plays->x_play * 32) + 16) + cos(obj->plays->rot_ang) * 40,
-		((obj->plays->y_play * 32) + 16) + sin(obj->plays->rot_ang) * 40);
+		((obj->plays->x_play) + 16) + cos(obj->plays->rot_ang) * 80,
+		((obj->plays->y_play) + 16) + sin(obj->plays->rot_ang) * 80);
 }
 
 void	creat_img(t_ray *obj)

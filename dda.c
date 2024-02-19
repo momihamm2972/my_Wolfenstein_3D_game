@@ -6,42 +6,42 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 19:01:43 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/14 11:41:37 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:00:56 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-void	new_posi(t_ray *parzi)
-{
-	int	row;
-	int	clm;
+// void	new_posi(t_ray *parzi)
+// {
+// 	int	row;
+// 	int	clm;
 
-	row = 0;
-	while (parzi->game_map[row])
-	{
-		clm = 0;
-		while (parzi->game_map[row][clm])
-		{
-			if (check_is_player(parzi->game_map[row][clm]) == 1)
-			{
-				parzi->plays->x_play = clm;
-				parzi->plays->y_play = row;
-				return ;
-			}
-			clm++;
-		}
-		row++;
-	}
-}
+// 	row = 0;
+// 	while (parzi->game_map[row])
+// 	{
+// 		clm = 0;
+// 		while (parzi->game_map[row][clm])
+// 		{
+// 			if (check_is_player(parzi->game_map[row][clm]) == 1)
+// 			{
+// 				parzi->plays->x_play = clm;
+// 				parzi->plays->y_play = row;
+// 				return ;
+// 			}
+// 			clm++;
+// 		}
+// 		row++;
+// 	}
+// }
 
 void	dda(t_ray *obj, double x1, double y1)
 {
 	int	indx;
 
 	indx = 0;
-	obj->algo->x_zero = (obj->plays->x_play * 32) + 16;
-	obj->algo->y_zero = (obj->plays->y_play * 32) + 16;
+	obj->algo->x_zero = (obj->plays->x_play) + 16;
+	obj->algo->y_zero = (obj->plays->y_play) + 16;
 	obj->algo->dx = x1 - obj->algo->x_zero;
 	obj->algo->dy = y1 - obj->algo->y_zero;
 	if (fabs (obj->algo->dx) > fabs(obj->algo->dy))
@@ -55,7 +55,7 @@ void	dda(t_ray *obj, double x1, double y1)
 	while (indx <= obj->algo->steps)
 	{
 		put_pix_img(obj->my_image, obj->algo->flo_x,
-			obj->algo->flo_y, obj->colur);
+			obj->algo->flo_y, 0xFFFFFF);
 		obj->algo->flo_x += obj->algo->x_incre;
 		obj->algo->flo_y += obj->algo->y_incre;
 		indx++;
