@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/19 11:04:19 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/23 13:56:51 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ typedef struct player
 	double		rotation_speed;
 	double		new_x;
 	double		new_y;
+	int			i;
+	// rays
+	double		f_o_v;
+	double		ray_ang;
+	int			num_of_rays;
+	int			pixel_per_colum;
 }	t_play;
 
 typedef struct dda
@@ -62,6 +68,7 @@ typedef struct ray
 	int				the_long_line;
 	int				the_rows;
 	int				rad;
+	// int				i;
 	t_img			*my_image;
 	t_play			*plays;
 	t_dda			*algo;
@@ -69,7 +76,7 @@ typedef struct ray
 
 /******************************** RAYCASTING **********************************/
 void	the_longest_line(t_cub3d *usef, t_ray *my_struct);
-void	init_player(t_play *ready, t_cub3d *usef);
+void	init_player(t_ray *ready, t_cub3d *usef);
 void	put_pix_img(t_img *img, int x, int y, int colur);
 void	get_curnt_posi(t_play *parzival, t_cub3d *yous);
 void	dda(t_ray *obj, double x1, double y1);
@@ -79,12 +86,14 @@ void	make_valus(t_play *blanka, t_ray *obj);
 void	make_square(int row, int clm, t_ray *object);
 void	draw_line(t_ray *obj);
 void	creat_img(t_ray *obj);
-int		check_is_player(char c);
+int		check_is_player(t_play *obj, char c);
 int		close_the_win(void);
 int		ft_move(int events, void *object);
 int		ft_again(t_ray *obj);
 int		ft_mover(int events, void *object);
 int		is_wall(t_ray *obj, double x, double y);
+double	deg2rad(double degrees);
+double	rad2deg(double radians);
 /******************************************************************************/
 
 #endif

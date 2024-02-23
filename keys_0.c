@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:28:57 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/19 11:15:45 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/23 13:36:56 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,13 @@ void	make_valus(t_play *blanka, t_ray *obj)
 	blanka->new_y = blanka->y_play;
 	blanka->x_play += cos(blanka->rot_ang) * movestep;
 	blanka->y_play += sin(blanka->rot_ang) * movestep;
-	printf ("ana zojk\n");
+	// printf ("ana zojk\n");
 	if ((is_wall (obj, blanka->x_play, blanka->y_play) == -1))
 	{
 		blanka->x_play = blanka->new_x;
 		blanka->y_play = blanka->new_y;
 	}
 }
-
-// void	resetval(t_ray *obj)
-// {
-// 	obj->plays->turn_d = 0;
-// 	obj->plays->walk_d = 0;
-// }
 
 int	ft_mover(int events, void *object)
 {

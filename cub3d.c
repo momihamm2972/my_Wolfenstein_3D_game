@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 18:26:57 by yonadry           #+#    #+#             */
-/*   Updated: 2024/02/19 11:26:40 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/23 15:44:41 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	free_all(t_cub3d *cub3d)
 void	mlx_art(t_cub3d *usef, t_ray *strahl, t_play *parzival)
 {
 	strahl->start = mlx_init ();
-	init_player (parzival, usef);
 	the_longest_line (usef, strahl);
+	init_player (strahl, usef);
 	get_curnt_posi (parzival, usef);
 	strahl->window = mlx_new_window (strahl->start, strahl->the_long_line * 32,
 			strahl->the_rows * 32, "MUSLIM");
