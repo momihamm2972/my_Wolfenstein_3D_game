@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/23 13:56:51 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/29 01:53:32 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,17 @@ typedef struct image
 	int		lenofline;
 	int		end;
 }	t_img;
+
+typedef struct casting
+{
+	int	first_hit_x;
+	int	first_hit_y;
+	double	is_up;
+	double	is_down;
+	double	is_left;
+	double	is_right;
+}	t_cast;
+
 
 typedef struct player
 {
@@ -44,6 +55,12 @@ typedef struct player
 	double		ray_ang;
 	int			num_of_rays;
 	int			pixel_per_colum;
+	double		tile;
+	int			wall_hit_x;
+	int			wall_hit_y;
+	double		massafa;
+	double		xh_move;
+	double		yh_move;
 }	t_play;
 
 typedef struct dda
@@ -72,6 +89,7 @@ typedef struct ray
 	t_img			*my_image;
 	t_play			*plays;
 	t_dda			*algo;
+	// t_cast			*demantion;
 }	t_ray;
 
 /******************************** RAYCASTING **********************************/
@@ -94,6 +112,11 @@ int		ft_mover(int events, void *object);
 int		is_wall(t_ray *obj, double x, double y);
 double	deg2rad(double degrees);
 double	rad2deg(double radians);
+
+
+
+
+void	init_cast(t_ray *amine);
 /******************************************************************************/
 
 #endif

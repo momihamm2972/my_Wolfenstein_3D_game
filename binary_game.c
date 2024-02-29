@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 09:39:39 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/19 11:27:07 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:16:02 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	draw_line(t_ray *obj)
 		x++;
 		val++;
 	}
+	obj->colur = 0x00FF1A;
 	dda(obj,
 		((obj->plays->x_play) + 16) + cos(obj->plays->rot_ang) * 80,
 		((obj->plays->y_play) + 16) + sin(obj->plays->rot_ang) * 80);

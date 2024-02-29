@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 19:01:43 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/19 11:00:56 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:15:47 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	dda(t_ray *obj, double x1, double y1)
 	while (indx <= obj->algo->steps)
 	{
 		put_pix_img(obj->my_image, obj->algo->flo_x,
-			obj->algo->flo_y, 0xFFFFFF);
+			obj->algo->flo_y, obj->colur);
 		obj->algo->flo_x += obj->algo->x_incre;
 		obj->algo->flo_y += obj->algo->y_incre;
 		indx++;

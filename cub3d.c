@@ -6,12 +6,17 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 18:26:57 by yonadry           #+#    #+#             */
-/*   Updated: 2024/02/23 15:44:41 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/02/23 20:17:43 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include "cub3d.h"
 #include "raycasting.h"
+
+void	mr()
+{
+	system ("leaks cub3D");
+}
 
 void	free_all(t_cub3d *cub3d)
 {
@@ -48,7 +53,7 @@ int	main(int ac, char **av)
 {
 	t_cub3d	*cub3d;
 	t_ray	*strahl;
-
+	// atexit (mr);
 	if (ac == 2)
 	{
 		cub3d = malloc(sizeof(t_cub3d));
