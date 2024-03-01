@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:41:58 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/29 02:13:51 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:45:35 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ int	check_is_player(t_play *obj, char c)
 		return (1);
 	}
 	return (0);
+}
+
+void	determine_ange(t_ray *jackboys)
+{
+	jackboys->plays->rot_ang = fmod ( jackboys->plays->rot_ang  ,(2 * M_PI));
+	if (jackboys->plays->rot_ang < 0)
+		jackboys->plays->rot_ang +=  (2 * M_PI);
 }
 
 void	init_player(t_ray *ready, t_cub3d *usef)
@@ -127,6 +134,7 @@ void	checker_of_directoins(t_ray *kmi, t_cast *ptr)
 
 void	cast_an_ray(t_ray *bayren, t_cast *ptr)
 {
+	determine_ange (bayren);
 	checker_of_directoins (bayren, ptr);
 	// if (ptr->is_right == 0)
 	// 	printf ("000000000000000000000\n");
@@ -153,7 +161,7 @@ void	casting(t_ray *parzi)
 		printf ("\nkmi\n");
 	parzi->plays->ray_ang = parzi->plays->rot_ang - (parzi->plays->f_o_v / 2);
 	// while (id < 1)
-	while (id < 1)
+	while (id < parzi->plays->num_of_rays)
 	{
 		// printf ("casting\n");
 		// take the DATA of each ray; PS==> you need to figr out how to save the DATA you will need;
@@ -173,6 +181,7 @@ int	ft_again(t_ray *obj)
 	int		clm;
 
 	row = 0;
+	// determine_ange (obj);
 	printf ("%f\n", obj->plays->ray_ang);
 	creat_img (obj);
 	while (obj->game_map[row])
