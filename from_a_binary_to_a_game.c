@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:41:58 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/01 19:45:35 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/03 08:21:20 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	check_is_player(t_play *obj, char c)
 
 void	determine_ange(t_ray *jackboys)
 {
-	jackboys->plays->rot_ang = fmod ( jackboys->plays->rot_ang  ,(2 * M_PI));
+	jackboys->plays->rot_ang = fmod ( jackboys->plays->rot_ang  , (2 * M_PI));
 	if (jackboys->plays->rot_ang < 0)
 		jackboys->plays->rot_ang +=  (2 * M_PI);
 }
@@ -46,85 +46,108 @@ void	init_player(t_ray *ready, t_cub3d *usef)
 	ready->plays->rotation_speed = 2 * (M_PI / 90);
 	// raycasting vars;
 	ready->plays->f_o_v = deg2rad (60.00);
-	// ready->i = 0;
-	ready->plays->pixel_per_colum = 30; 
-	// ready->plays->num_of_rays = 1.0;
-	// printf ("lline %d\n", ready->the_long_line);
-	// printf ("ll32ine %d\n", ready->the_long_line * 32);
-	// printf ("pixel %d\n", ready->plays->pixel_per_colum);
-	// printf ("numof_rays %d\n", ready->plays->num_of_rays);
-	// printf ("result %d\n", (ready->the_long_line * 32) / ready->plays->pixel_per_colum);
-	// printf ("pix %d\tnumofrays %d\n", ready->plays->pixel_per_colum, ready->plays->num_of_rays);
+	ready->plays->pixel_per_colum = 13; 
 	ready->plays->num_of_rays = (ready->the_long_line * 32) / ready->plays->pixel_per_colum;
-	// printf ("zre3   %d\n", (ready->the_long_line * 32) / ready->plays->num_of_rays);
-	// printf ("pix %d\tnumofrays %d\n", ready->plays->pixel_per_colum, ready->plays->num_of_rays);
-	// printf ("numof rays %d\n", ready->plays->num_of_rays);
-	// exit (0);
-	init_cast(ready);
+	// init_cast(ready);
 }
 
 void	init_cast(t_ray *amine)
 {
 	amine->plays->tile = 32;
-	amine->plays->wall_hit_x = 0;
-	amine->plays->wall_hit_y = 0;
-	amine->plays->massafa = 0;
+	// amine->plays->wall_hit_x = 0;
+	// amine->plays->wall_hit_y = 0;
+	// amine->plays->massafa = 0;
+	amine->plays->finalyawall = 0;
+	// bayren->plays->finalyawall
 }
 
 void	hor_hit(t_ray *bayren, t_cast *ptr)
 {
-	// int	x_move;
-	// int	y_move;
-	// int	first_hit_x;
-	// int	first_hit_y;
-
+	// double next_h_x;
+	// double next_h_y;
+	
 	// finding the coleset horizontal hit;
+	// printf ("manul %f \n", bayren->plays->rot_ang - (bayren->plays->f_o_v / 2));
+	// printf ("likid %f \n", tan(bayren->plays->ray_ang));
+	
 	ptr->first_hit_y = floor (bayren->plays->y_play / bayren->plays->tile);
+	ptr->first_hit_y *= bayren->plays->tile;
 	if (ptr->is_down == 0)
 		ptr->first_hit_y += bayren->plays->tile;	
-	// printf ("kmihb000a\n");
-	ptr->first_hit_y *= bayren->plays->tile;
-	ptr->first_hit_x = bayren->plays->x_play + ((bayren->plays->y_play - ptr->first_hit_y) / tan(bayren->plays->ray_ang));
+	ptr->first_hit_x = (ptr->first_hit_y - bayren->plays->y_play) / tan(bayren->plays->ray_ang);
+	ptr->first_hit_x += bayren->plays->x_play;
 	// calcul moves;
-	bayren->plays->yh_move = 32;
-	bayren->plays->xh_move = 32 / tan(bayren->plays->ray_ang);
+	bayren->plays->yh_move = bayren->plays->tile;
+	bayren->plays->xh_move = bayren->plays->tile / tan(bayren->plays->ray_ang);
 	if (ptr->is_up == 0)
 		bayren->plays->yh_move *= -1;
-	else
-		bayren->plays->yh_move *= 1;
+	// else
+	// 	bayren->plays->yh_move *= 1;
 	if (ptr->is_left == 0 && bayren->plays->xh_move > 0)
 		bayren->plays->xh_move *= -1;
-	else
-		bayren->plays->xh_move *= 1;
+	// else
+	// 	bayren->plays->xh_move *= 1;
 	if (ptr->is_right == 0 && bayren->plays->xh_move < 0)
 		bayren->plays->xh_move *= -1;
-	else
-		bayren->plays->xh_move *= 1;
+	// else
+	// 	bayren->plays->xh_move *= 1;
+	// now hit the wall;
+	ptr->next_h_x = ptr->first_hit_x;
+	ptr->next_h_y = ptr->first_hit_y;
+	// now check is the X and Y of my pixel is wall or not;
+	if (ptr->is_up == 0)
+		ptr->next_h_y--;
+	// while (bayren->plays->finalyawall == 0)
+	while (ptr->next_h_x >= 0 && ptr->next_h_x <= (bayren->the_long_line * 32) && ptr->next_h_y >= 0 && ptr->next_h_x <= (bayren->the_long_line * 32))
+	{
+		if (is_ray_hit_wall (bayren, ptr->next_h_x, ptr->next_h_y) == -1)
+		{
+			bayren->plays->finalyawall = 1;
+			ptr->wall_hit_x = ptr->next_h_x;
+			ptr->wall_hit_y = ptr->next_h_y;
+			// printf ("X %f\tY %f\n", ptr->wall_hit_x , ptr->wall_hit_y);
+			bayren->colur = 0xFFFF00;
+			dda(bayren, ptr->wall_hit_x, ptr->wall_hit_y);
+			break;
+		}
+		else
+		{
+			ptr->next_h_x += bayren->plays->xh_move;
+			ptr->next_h_y += bayren->plays->yh_move;
+		}
+	}
+	// }
 	
 }
 
 void	checker_of_directoins(t_ray *kmi, t_cast *ptr)
 {
+	
 	if (kmi->plays->ray_ang > 0 && kmi->plays->ray_ang < M_PI)
 	{
+		// printf ("down\n");
 		ptr->is_down = 0;
 		ptr->is_up = 1;
 	}
 	else
 	{
+		// printf ("up\n");
 		ptr->is_down = 1;
 		ptr->is_up = 0;
 	}
 	if (kmi->plays->ray_ang < (0.5 * M_PI) || kmi->plays->ray_ang > (1.5 * M_PI))
 	{
+		// printf ("right\n");
 		ptr->is_right = 0;
 		ptr->is_left = 1;
 	}
 	else
 	{
+		// printf ("left\n"); 
 		ptr->is_right = 1;
 		ptr->is_left = 0;
 	}
+	
 }
 
 // void	vir_hit(t_ray *bayren)
@@ -132,8 +155,17 @@ void	checker_of_directoins(t_ray *kmi, t_cast *ptr)
 	
 // }
 
+void	init_ptr (t_cast *ptr)
+{
+	ptr->next_h_x = 0;
+	ptr->next_h_y = 0;
+	ptr->first_hit_x = 0;
+	ptr->first_hit_y = 0;
+}
+
 void	cast_an_ray(t_ray *bayren, t_cast *ptr)
 {
+	init_ptr (ptr);
 	determine_ange (bayren);
 	checker_of_directoins (bayren, ptr);
 	// if (ptr->is_right == 0)
@@ -153,26 +185,28 @@ void	casting(t_ray *parzi)
 	int	id;
 	t_cast	*ptr;
 
+	init_cast (parzi);
 	ptr = (t_cast *) malloc (sizeof (t_cast) * 1);
 	if (!ptr)
 		return ;
 	id = 0;
-	if (id > (int)parzi->plays->num_of_rays)
-		printf ("\nkmi\n");
+	// if (id > (int)parzi->plays->num_of_rays)
+	// 	printf ("\nkmi\n");
 	parzi->plays->ray_ang = parzi->plays->rot_ang - (parzi->plays->f_o_v / 2);
 	// while (id < 1)
-	while (id < parzi->plays->num_of_rays)
+	while (id <= parzi->plays->num_of_rays)
 	{
-		// printf ("casting\n");
+		// printf ("%f\n", parzi->plays->num_of_rays);
 		// take the DATA of each ray; PS==> you need to figr out how to save the DATA you will need;
 		// cast each ray;
 		cast_an_ray (parzi, ptr);
-		parzi->colur = 0xFFFFFF;
-		if (id < 1000)
-			dda (parzi, ((parzi->plays->x_play) + 16) + cos(parzi->plays->ray_ang ) * 80, ((parzi->plays->y_play) + 16) + sin(parzi->plays->ray_ang )  * 80);
+		parzi->colur = 0xFF0000;
+		if (id == 0 || id == (parzi->plays->num_of_rays - 1))
+			dda (parzi, ((parzi->plays->x_play) + 16) + cos(parzi->plays->ray_ang ) * 100, ((parzi->plays->y_play) + 16) + sin(parzi->plays->ray_ang )  * 100);
 		parzi->plays->ray_ang += parzi->plays->f_o_v / parzi->plays->num_of_rays;
 		id++;
 	}
+	printf ("%d\n", parzi->plays->num_of_rays);
 }
 
 int	ft_again(t_ray *obj)
@@ -180,9 +214,8 @@ int	ft_again(t_ray *obj)
 	int		row;
 	int		clm;
 
+	// printf (" %f \n",obj->plays->ray_ang);
 	row = 0;
-	// determine_ange (obj);
-	printf ("%f\n", obj->plays->ray_ang);
 	creat_img (obj);
 	while (obj->game_map[row])
 	{
@@ -198,9 +231,12 @@ int	ft_again(t_ray *obj)
 		row++;
 	}
 	// obj->colur = 0xFFFFFF;
-	casting(obj);
 	obj->colur = 0x00FF1A;
 	draw_line (obj);
+	casting(obj);
+	// printf ("pikoma\n");
+	// obj->colur = 0xFFFF00;
+	// 		dda(obj, obj->plays->wall_hit_x, obj->plays->wall_hit_y);
 	mlx_put_image_to_window (obj->start, obj->window,
 		obj->my_image->mlx_img, 0, 0);
 	return (0);

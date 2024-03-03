@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:28:57 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/29 01:22:54 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/03 07:47:07 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,24 @@
 int	close_the_win(void)
 {
 	exit (0);
+}
+
+int	is_ray_hit_wall(t_ray *obj, double x, double y)
+{
+	int	row;
+	int	clm;
+	int	i;
+
+	i = 0;
+	clm = floor (x / 32);
+	row = floor (y / 32);
+	// printf ("444444444\n");
+	if (obj->game_map[row][clm] == '1')
+	{
+		// printf ("##############\t%c\t#####row %d  ######clm  %d######\n", obj->game_map[row][clm], row, clm);
+		return (-1);
+	}
+	return (0);
 }
 
 int	is_wall(t_ray *obj, double x, double y)
@@ -26,15 +44,19 @@ int	is_wall(t_ray *obj, double x, double y)
 	i = 0;
 	clm = round ((x - 0) / 32);
 	row = round ((y - 0) / 32);
+	// printf ("444444444\n");
 	if (obj->game_map[row][clm] == '1')
 		i++;
+		// printf ("55555555555555\n");
 	clm = round (obj->plays->new_x / 32);
 	if (obj->game_map[row][clm] == '1')
 		i++;
+		// printf ("6666666666666666\n");
 	clm = round ((x - 0) / 32);
 	row = round (obj->plays->new_y / 32);
 	if (obj->game_map[row][clm] == '1')
 		i++;
+		// printf ("7777777777777\n");
 	if (i > 0)
 		return (-1);
 	return (0);

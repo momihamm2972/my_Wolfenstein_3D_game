@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/29 01:53:32 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/03 08:16:31 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,17 @@ typedef struct image
 
 typedef struct casting
 {
-	int	first_hit_x;
-	int	first_hit_y;
+	double	first_hit_x;
+	double	first_hit_y;
 	double	is_up;
 	double	is_down;
 	double	is_left;
 	double	is_right;
+	double	massafa;
+	double			wall_hit_x;
+	double			wall_hit_y;
+	double next_h_x;
+	double next_h_y;
 }	t_cast;
 
 
@@ -51,16 +56,15 @@ typedef struct player
 	double		new_y;
 	int			i;
 	// rays
-	double		f_o_v;
+	double		f_o_v; 
 	double		ray_ang;
 	int			num_of_rays;
-	int			pixel_per_colum;
+	double		pixel_per_colum;
 	double		tile;
-	int			wall_hit_x;
-	int			wall_hit_y;
-	double		massafa;
 	double		xh_move;
 	double		yh_move;
+	double			finalyawall;
+	// double		wall_hi
 }	t_play;
 
 typedef struct dda
@@ -117,6 +121,7 @@ double	rad2deg(double radians);
 
 
 void	init_cast(t_ray *amine);
+int	is_ray_hit_wall(t_ray *obj, double x, double y);
 /******************************************************************************/
 
 #endif
