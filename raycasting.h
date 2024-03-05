@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/03 08:16:31 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/05 08:48:28 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,19 @@ typedef struct casting
 	double	is_down;
 	double	is_left;
 	double	is_right;
-	double	massafa;
-	double			wall_hit_x;
-	double			wall_hit_y;
+	double	hor_massafa;
+	double	vir_massafa;
+	double			horzwall_hit_x;
+	double			horzwall_hit_y;
+	double			vir_wall_hit_x;
+	double			vir_wall_hit_y;
 	double next_h_x;
 	double next_h_y;
+	double next_vir_x;
+	double next_vir_y;
+	double		x_found_wall;
+	double		y_found_wall;
+	double	massafa;
 }	t_cast;
 
 
@@ -61,9 +69,11 @@ typedef struct player
 	int			num_of_rays;
 	double		pixel_per_colum;
 	double		tile;
-	double		xh_move;
-	double		yh_move;
-	double			finalyawall;
+	double		x_move;
+	double		y_move;
+	double			finalya_h_wall;
+	double			finalya_v_wall;
+	int		i_am_wall;
 	// double		wall_hi
 }	t_play;
 
@@ -93,7 +103,7 @@ typedef struct ray
 	t_img			*my_image;
 	t_play			*plays;
 	t_dda			*algo;
-	// t_cast			*demantion;
+	t_cast			*demantion;
 }	t_ray;
 
 /******************************** RAYCASTING **********************************/
