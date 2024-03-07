@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/05 08:48:28 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/07 19:52:19 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ typedef struct casting
 	double		x_found_wall;
 	double		y_found_wall;
 	double	massafa;
+	int		gang;
+	double	ray_ang;
 }	t_cast;
 
 
@@ -65,7 +67,7 @@ typedef struct player
 	int			i;
 	// rays
 	double		f_o_v; 
-	double		ray_ang;
+	// double		ray_ang;
 	int			num_of_rays;
 	double		pixel_per_colum;
 	double		tile;
@@ -103,7 +105,7 @@ typedef struct ray
 	t_img			*my_image;
 	t_play			*plays;
 	t_dda			*algo;
-	t_cast			*demantion;
+	t_cast			dataray[1440];
 }	t_ray;
 
 /******************************** RAYCASTING **********************************/

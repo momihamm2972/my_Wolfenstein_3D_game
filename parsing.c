@@ -288,9 +288,14 @@ void parse_map(t_cub3d *cub3d)
         j = 0;
         while (j < ft_strlen(cub3d->map[i]))
         {
-            if (cub3d->map[i][j] == '0')
+            if (cub3d->map[i][j] == '0' || cub3d->map[i][j] == 'N'
+                || cub3d->map[i][j] == 'S'
+                || cub3d->map[i][j] == 'E' || cub3d->map[i][j] == 'W')
             {
-                if (i == 0 || i == cub3d->map_length - 1 || !check_wall(cub3d->map[i][j + 1]) || !check_wall(cub3d->map[i][j - 1]) || !check_wall(cub3d->map[i + 1][j]) || !check_wall(cub3d->map[i - 1][j]) || cub3d->count != 1)
+                if (i == 0 || i == cub3d->map_length - 1
+                    || !check_wall(cub3d->map[i][j + 1]) || !check_wall(cub3d->map[i][j - 1])
+                    || !check_wall(cub3d->map[i + 1][j]) || !check_wall(cub3d->map[i - 1][j])
+                    || cub3d->count != 1)
                     p_error("Invalid map");
             }
             j++;
