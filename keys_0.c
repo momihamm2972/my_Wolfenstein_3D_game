@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:28:57 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/06 19:30:17 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/08 17:48:20 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void	make_valus(t_play *blanka, t_ray *obj)
 	blanka->new_y = blanka->y_play;
 	blanka->x_play += cos(blanka->rot_ang) * movestep;
 	blanka->y_play += sin(blanka->rot_ang) * movestep;
-	// printf ("ana zojk\n");
 	if ((is_wall (obj, blanka->x_play, blanka->y_play) == -1))
 	{
 			printf ("***************************************************************\n");
@@ -83,34 +82,16 @@ void	make_valus(t_play *blanka, t_ray *obj)
 	}
 	if ((is_wall (obj, blanka->x_play, blanka->y_play) == 0))
 		blanka->i_am_wall = 0;
-	// printf ("%d\n", blanka->i_am_wall);
 }
 
 int	ft_mover(int events, void *object)
 {
 	t_ray	*obj;
-	// t_cast *ptr;
 
 	obj = (t_ray *)object;
-	// ptr = obj->dataray;
-	// int i =0;
+
 	if (events == 53)
-	{
-		// printf ("*********************************************\n");
-		// while (ptr != NULL)
-		// {
-		// 	printf ("this ray is %d\n{", i);
-		// 	printf ("first_hit_x = %f\n", obj->dataray->first_hit_x);
-		// 	printf ("first_hit_y = %f\n", obj->dataray->first_hit_y);
-		// 	printf ("hor_massafa = %f\n", obj->dataray->hor_massafa);
-		// 	printf ("vir_massafa = %f\n", obj->dataray->vir_massafa);
-		// 	printf ("massafa = %f}\n", obj->dataray->massafa);
-		// 	ptr++;
-		// 	i++;
-		// }
-		// printf ("num of rays %d\n", obj->plays->num_of_rays);
 		close_the_win ();
-	}
 	if (events == 124 || events == 2)
 		obj->plays->turn_d = 0;
 	if (events == 123 || events == 0)
@@ -125,29 +106,10 @@ int	ft_mover(int events, void *object)
 int	ft_move(int events, void *object)
 {
 	t_ray	*obj;
-	// t_cast *ptr;
 
 	obj = (t_ray *) object;
-	// ptr = obj->dataray;
-	// int i =0;
 	if (events == 53)
-	{
-		// printf ("*********************************************\n");
-		// while (ptr != NULL && i < obj->plays->num_of_rays)
-		// {
-		// 	printf ("kkkk this ray is %d\n{", i);
-		// 	printf ("kkkk first_hit_x = %f\n", obj->dataray->first_hit_x);
-		// 	printf ("kkkk first_hit_y = %f\n", obj->dataray->first_hit_y);
-		// 	printf ("kkkk hor_massafa = %f\n", obj->dataray->hor_massafa);
-		// 	printf ("kkkk vir_massafa = %f\n", obj->dataray->vir_massafa);
-		// 	printf ("kkkk massafa = %f}\n", obj->dataray->massafa);
-		// 	ptr++;
-		// 	i++;
-		// }
-		// printf ("num of rays %d\n", obj->plays->num_of_rays);
-		// close_the_win ();
 		close_the_win ();
-	}
 	if (events == 124 || events == 2)
 		obj->plays->turn_d = 1;
 	if (events == 123 || events == 0)

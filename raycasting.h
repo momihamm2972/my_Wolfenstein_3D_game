@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/07 19:52:19 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/08 19:29:45 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "cub3d.h"
 # include <mlx.h>
+
+# define RAYS 1490
 
 typedef struct image
 {
@@ -101,11 +103,13 @@ typedef struct ray
 	int				the_long_line;
 	int				the_rows;
 	int				rad;
+	double			window_width;
+	double			window_height;
 	// int				i;
 	t_img			*my_image;
 	t_play			*plays;
 	t_dda			*algo;
-	t_cast			dataray[1440];
+	t_cast			dataray[RAYS];
 }	t_ray;
 
 /******************************** RAYCASTING **********************************/
