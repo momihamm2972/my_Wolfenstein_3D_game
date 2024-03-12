@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/08 19:29:45 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/12 05:43:20 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "cub3d.h"
 # include <mlx.h>
 
-# define RAYS 1490
+# define RAYS 1440
 
 typedef struct image
 {
@@ -48,7 +48,8 @@ typedef struct casting
 	double		x_found_wall;
 	double		y_found_wall;
 	double	massafa;
-	int		gang;
+	int		virt;
+	int		horz;
 	double	ray_ang;
 }	t_cast;
 
@@ -90,8 +91,8 @@ typedef struct dda
 	double	steps;
 	double	x_incre;
 	double	y_incre;
-	float	flo_x;
-	float	flo_y;
+	double	flo_x;
+	double	flo_y;
 }	t_dda;
 
 typedef struct ray
@@ -139,5 +140,7 @@ double	rad2deg(double radians);
 void	init_cast(t_ray *amine);
 int	is_ray_hit_wall(t_ray *obj, double x, double y);
 /******************************************************************************/
+
+double	normalize_angle(double angle);
 
 #endif

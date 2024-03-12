@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 09:39:39 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/23 16:16:02 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/12 05:19:56 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	draw_line(t_ray *obj)
 	dda(obj,
 		((obj->plays->x_play) + 16) + cos(obj->plays->rot_ang) * 80,
 		((obj->plays->y_play) + 16) + sin(obj->plays->rot_ang) * 80);
+	// printf ("%f \n", obj->plays->rot_ang);
 }
 
 void	creat_img(t_ray *obj)
