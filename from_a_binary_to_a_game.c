@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:41:58 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/13 01:00:53 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/13 07:25:31 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_ray_down(double ray_angle)
 {
-	normalize_angle(ray_angle);
+	// normalize_angle(ray_angle);
 	// if (ray_angle > 0 && ray_angle < M_PI)
 	// {
 	// 	printf ("i am down\n");
@@ -29,7 +29,7 @@ int	is_ray_up(double ray_angle)
 
 int	is_ray_right(double ray_angle)
 {
-	normalize_angle(ray_angle);
+	// normalize_angle(ray_angle);
 	if (ray_angle < M_PI / 2 || ray_angle > 3 * M_PI / 2)
 		return (1);
 	return (0);
@@ -265,8 +265,8 @@ int	hor_hit(t_ray *bayren, int	id)
 int	vir_hit(t_ray *bayren, int id)
 {
 	// determine_ange (bayren);
-	int kmi = 0;
-	int mimi;
+	// int kmi = 0;
+	// int mimi;
 	determine_ange (bayren, id);
 	bayren->dataray[id].first_hit_x = floor (bayren->plays->x_play / bayren->plays->tile) * bayren->plays->tile;
 	if (is_ray_right(bayren->dataray[id].ray_ang))
@@ -298,10 +298,10 @@ int	vir_hit(t_ray *bayren, int id)
 		check_x = bayren->dataray[id].next_vir_x;
 		if (is_ray_left(bayren->dataray[id].ray_ang))
 			check_x = bayren->dataray[id].next_vir_x - 1;
-		mimi = is_ray_hit_wall (bayren , check_x, bayren->dataray[id].next_vir_y);
+		// mimi = is_ray_hit_wall (bayren , check_x, bayren->dataray[id].next_vir_y);
 		if (is_ray_hit_wall (bayren , check_x, bayren->dataray[id].next_vir_y) == -1)
 		{
-			kmi = 1;
+			// kmi = 1;
 			bayren->dataray[id].vir_wall_hit_x = bayren->dataray[id].next_vir_x;
 			bayren->dataray[id].vir_wall_hit_y = bayren->dataray[id].next_vir_y;
 			return 1;
@@ -417,9 +417,12 @@ void	casting(t_ray *parzi)
 		}
 		// determine_ange (parzi, id);
 		cast_an_ray (parzi, id);
-		parzi->dataray[id + 1].ray_ang = parzi->dataray[id].ray_ang ;
-		id++;
-		parzi->dataray[id].ray_ang += parzi->plays->f_o_v / 1440;
+		// if (id + 1 <= 1439)
+		// {
+			parzi->dataray[id + 1].ray_ang = parzi->dataray[id].ray_ang ;
+			id++;
+			parzi->dataray[id].ray_ang += parzi->plays->f_o_v / 1440;
+		// }
 		// parzi->dataray[id].ray_ang  = normalize_angle(parzi->dataray[id].ray_ang );
 	}
 }
