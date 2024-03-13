@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 19:01:43 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/11 04:29:59 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/13 00:29:25 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	dda(t_ray *obj, double x1, double y1)
 	// 	x1 = 1440;
 	// if (y1 > (obj->the_rows * 32))
 	// 	y1 = (obj->the_rows * 32);
-	obj->algo->x_zero = (obj->plays->x_play) + 16;
-	obj->algo->y_zero = (obj->plays->y_play) + 16;
+	obj->algo->x_zero = (obj->plays->x_play);
+	obj->algo->y_zero = (obj->plays->y_play);
 	obj->algo->dx = x1 - obj->algo->x_zero;
 	obj->algo->dy = y1 - obj->algo->y_zero;
 	if (fabs (obj->algo->dx) > fabs(obj->algo->dy))

@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 09:39:39 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/12 05:19:56 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/13 00:59:33 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,25 @@ void	draw_line(t_ray *obj)
 
 	x = 0;
 	val = 0;
+	obj->colur = 0x00FF1A;
 	while (x < 9)
 	{
 		y = 0;
 		var = 0;
 		while (y < 9)
 		{
-			put_pix_img (obj->my_image, (obj->plays->x_play + 12) + var,
-				(obj->plays->y_play + 12) + val, obj->colur);
+			put_pix_img (obj->my_image, (obj->plays->x_play - 4) + var,
+				(obj->plays->y_play - 4) + val, obj->colur);
 			y++;
 			var++;
 		}
 		x++;
 		val++;
 	}
-	obj->colur = 0x00FF1A;
+	obj->colur = 0x66B2FF;
 	dda(obj,
-		((obj->plays->x_play) + 16) + cos(obj->plays->rot_ang) * 80,
-		((obj->plays->y_play) + 16) + sin(obj->plays->rot_ang) * 80);
+		((obj->plays->x_play)) + cos(obj->plays->rot_ang) * 80,
+		((obj->plays->y_play)) + sin(obj->plays->rot_ang) * 80);
 	// printf ("%f \n", obj->plays->rot_ang);
 }
 

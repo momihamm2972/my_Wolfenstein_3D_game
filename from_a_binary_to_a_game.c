@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:41:58 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/12 22:42:41 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/13 01:00:53 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -413,7 +413,7 @@ void	casting(t_ray *parzi)
 		{
 			// if (id == 0)
 				// printf (" fata %f\n", parzi->dataray[id].ray_ang);
-			dda (parzi, ((parzi->plays->x_play) + 16) + cos(parzi->dataray[id].ray_ang ) * 790, ((parzi->plays->y_play) + 16) + sin(parzi->dataray[id].ray_ang ) * 790);
+			dda (parzi, ((parzi->plays->x_play)) + cos(parzi->dataray[id].ray_ang ) * 790, ((parzi->plays->y_play)) + sin(parzi->dataray[id].ray_ang ) * 790);
 		}
 		// determine_ange (parzi, id);
 		cast_an_ray (parzi, id);
@@ -470,10 +470,13 @@ void	draw_zero(t_ray *obj, t_play *parzi)
 		}
 		row++;
 	}
+	draw_line (obj);
 }
 
 void	ft_draw(t_ray *object, t_play *parzi)
 {
+	(void) parzi;
+	
 	int		row;
 	int		clm;
 
