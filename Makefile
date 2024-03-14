@@ -20,6 +20,9 @@ SRCS =	parsing.c \
 		dda.c \
 		ddaUtils.c \
 		binary_game.c \
+		directions.c \
+		init_my_vars.c \
+		press_and_reless.c \
 
 OBJS = ${SRCS:.c=.o}
 CC = cc

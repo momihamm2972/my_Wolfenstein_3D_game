@@ -6,48 +6,17 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 19:01:43 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/13 00:29:25 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/14 02:10:31 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
-
-// void	new_posi(t_ray *parzi)
-// {
-// 	int	row;
-// 	int	clm;
-
-// 	row = 0;
-// 	while (parzi->game_map[row])
-// 	{
-// 		clm = 0;
-// 		while (parzi->game_map[row][clm])
-// 		{
-// 			if (check_is_player(parzi->game_map[row][clm]) == 1)
-// 			{
-// 				parzi->plays->x_play = clm;
-// 				parzi->plays->y_play = row;
-// 				return ;
-// 			}
-// 			clm++;
-// 		}
-// 		row++;
-// 	}
-// }
 
 void	dda(t_ray *obj, double x1, double y1)
 {
 	int	indx;
 
 	indx = 0;
-	// if (x1 < 0)
-	// 	x1 = 0;
-	// if (y1 < 0)
-	// 	y1 = 0;
-	// if (x1 > 1440)
-	// 	x1 = 1440;
-	// if (y1 > (obj->the_rows * 32))
-	// 	y1 = (obj->the_rows * 32);
 	obj->algo->x_zero = (obj->plays->x_play);
 	obj->algo->y_zero = (obj->plays->y_play);
 	obj->algo->dx = x1 - obj->algo->x_zero;

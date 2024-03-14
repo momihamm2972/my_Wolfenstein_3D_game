@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/14 00:03:50 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/14 02:18:14 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <mlx.h>
 
 # define RAYS 1440
-// # define _win_w 1500
 
 typedef struct image
 {
@@ -26,8 +25,8 @@ typedef struct image
 	int		intperpixl;
 	int		lenofline;
 	int		end;
-	double win_w;
-	double win_h;
+	double	win_w;
+	double	win_h;
 }	t_img;
 
 typedef struct casting
@@ -40,49 +39,44 @@ typedef struct casting
 	double	is_right;
 	double	hor_massafa;
 	double	vir_massafa;
-	double			horzwall_hit_x;
-	double			horzwall_hit_y;
-	double			vir_wall_hit_x;
-	double			vir_wall_hit_y;
-	double next_h_x;
-	double next_h_y;
-	double next_vir_x;
-	double next_vir_y;
-	double		x_found_wall;
-	double		y_found_wall;
+	double	horzwall_hit_x;
+	double	horzwall_hit_y;
+	double	vir_wall_hit_x;
+	double	vir_wall_hit_y;
+	double	next_h_x;
+	double	next_h_y;
+	double	next_vir_x;
+	double	next_vir_y;
+	double	x_found_wall;
+	double	y_found_wall;
 	double	massafa;
+	double	ray_ang;
 	int		virt;
 	int		horz;
-	double	ray_ang;
 }	t_cast;
-
 
 typedef struct player
 {
-	int			turn_d;
-	int			walk_d;
-	double		x_play;
-	double		x_pixels;
-	double		y_pixels;
-	double		y_play;
-	double		rot_ang;
-	double		move_speed;
-	double		rotation_speed;
-	double		new_x;
-	double		new_y;
-	int			i;
-	// rays
-	double		f_o_v; 
-	// double		ray_ang;
-	int			num_of_rays;
-	double		pixel_per_colum;
-	double		tile;
-	double		x_move;
-	double		y_move;
-	double			finalya_h_wall;
-	double			finalya_v_wall;
-	int		i_am_wall;
-	// double		wall_hi
+	int		turn_d;
+	int		walk_d;
+	int		num_of_rays;
+	double	x_play;
+	double	x_pixels;
+	double	y_pixels;
+	double	y_play;
+	double	rot_ang;
+	double	move_speed;
+	double	rotation_speed;
+	double	new_x;
+	double	new_y;
+	double	vars_of_rays;
+	double	f_o_v;
+	double	pixel_per_colum;
+	double	tile;
+	double	x_move;
+	double	y_move;
+	double	finalya_h_wall;
+	double	finalya_v_wall;
 }	t_play;
 
 typedef struct dda
@@ -109,7 +103,6 @@ typedef struct ray
 	int				rad;
 	double			window_width;
 	double			window_height;
-	// int				i;
 	t_img			*my_image;
 	t_play			*plays;
 	t_dda			*algo;
@@ -128,22 +121,32 @@ void	make_valus(t_play *blanka, t_ray *obj);
 void	make_square(int row, int clm, t_ray *object);
 void	draw_line(t_ray *obj);
 void	creat_img(t_ray *obj);
+void	init_cast(t_ray *amine);
+void	calcul_hor_and_ver_dessetens(t_ray *obj, int id);
+void	the_first_vir_hit(t_ray *obj, int id);
+void	the_first_hor_hit(t_ray *obj, int id);
+void	determine_ange(t_ray *jackboys, int id);
+void	init_player(t_ray *ready, t_cub3d *usef);
+void	init_cast(t_ray *starlight);
+void	init_ptr(t_ray *parzi, int id);
+void	ft_draw(t_ray *object, t_play *parzi);
+void	draw_zero(t_ray *obj, t_play *parzi);
 int		check_is_player(t_play *obj, char c);
 int		close_the_win(void);
 int		ft_move(int events, void *object);
 int		ft_again(t_ray *obj);
 int		ft_mover(int events, void *object);
 int		is_wall(t_ray *obj, double x, double y);
+int		is_ray_hit_wall(t_ray *obj, double x, double y);
+int		is_ray_down(double ray_angle);
+int		is_ray_up(double ray_angle);
+int		is_ray_right(double ray_angle);
+int		is_ray_left(double ray_angle);
+int		vir_hit(t_ray *bayren, int id);
+int		hor_hit(t_ray *bayren, int id);
+int		check_is_player(t_play *obj, char c);
 double	deg2rad(double degrees);
 double	rad2deg(double radians);
-
-
-
-
-void	init_cast(t_ray *amine);
-int	is_ray_hit_wall(t_ray *obj, double x, double y);
 /******************************************************************************/
-
-double	normalize_angle(double angle);
 
 #endif

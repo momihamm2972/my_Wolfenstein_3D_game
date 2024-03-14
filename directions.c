@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   general_utils_0.c                                  :+:      :+:    :+:   */
+/*   directions.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 10:48:58 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/14 02:20:25 by momihamm         ###   ########.fr       */
+/*   Created: 2024/03/14 01:50:22 by momihamm          #+#    #+#             */
+/*   Updated: 2024/03/14 02:10:49 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-void	the_longest_line(t_cub3d *usef, t_ray *my_struct)
+int	is_ray_down(double ray_angle)
 {
-	int	big_len;
-	int	row;
-
-	big_len = 0;
-	row = 0;
-	while (usef->map[row])
-	{
-		if ((int)ft_strlen (usef->map[row]) > big_len)
-			big_len = (int)ft_strlen(usef->map[row]);
-		row++;
-	}
-	my_struct->the_long_line = big_len;
-	my_struct->the_rows = row;
+	return (ray_angle > 0 && ray_angle < M_PI);
 }
 
-double	deg2rad(double degrees)
+int	is_ray_up(double ray_angle)
 {
-	return (degrees * (M_PI / 180.0));
+	return (!is_ray_down(ray_angle));
 }
 
-double	rad2deg(double radians)
+int	is_ray_right(double ray_angle)
 {
-	return (radians * (180.0 / M_PI));
+	if (ray_angle < M_PI / 2 || ray_angle > 3 * M_PI / 2)
+		return (1);
+	return (0);
+}
+
+int	is_ray_left(double ray_angle)
+{
+	return (!is_ray_right(ray_angle));
 }
