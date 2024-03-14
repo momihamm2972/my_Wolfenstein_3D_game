@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/14 02:18:14 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/14 08:30:24 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct casting
 	double	y_found_wall;
 	double	massafa;
 	double	ray_ang;
+	double	wall_length;
 	int		virt;
 	int		horz;
 }	t_cast;
@@ -103,6 +104,7 @@ typedef struct ray
 	int				rad;
 	double			window_width;
 	double			window_height;
+	double			dest_por_wall;
 	t_img			*my_image;
 	t_play			*plays;
 	t_dda			*algo;
