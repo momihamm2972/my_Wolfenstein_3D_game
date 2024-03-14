@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:41:58 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/13 07:25:31 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/14 00:05:13 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void	init_player(t_ray *ready, t_cub3d *usef)
 	ready->plays->f_o_v = deg2rad (60.00);
 	ready->plays->pixel_per_colum = 1; 
 	ready->plays->num_of_rays = 1440;
+	ready->my_image->win_w = ready->the_long_line * 32;
+	ready->my_image->win_h = ready->the_rows * 32;
 }
 
 void	init_cast(t_ray *starlight)
@@ -289,7 +291,9 @@ int	vir_hit(t_ray *bayren, int id)
 	double check_x;
 
 	// while (kmi != 1)
-	while (bayren->dataray[id].next_vir_x > 0 && bayren->dataray[id].next_vir_x <= (1440) && bayren->dataray[id].next_vir_y > 0 && bayren->dataray[id].next_vir_y <= (bayren->the_rows * 32))
+	// printf("x: %d, y: %d\n", (bayren->the_long_line * 32), (bayren->the_rows * 32));
+	// exit(0);
+	while (bayren->dataray[id].next_vir_x > 0 && bayren->dataray[id].next_vir_x <= (bayren->the_long_line * 32) && bayren->dataray[id].next_vir_y > 0 && bayren->dataray[id].next_vir_y <= (bayren->the_rows * 32))
 	{
 		// if (!(bayren->dataray[id].next_vir_x > 0 && bayren->dataray[id].next_vir_x <= (1440) && bayren->dataray[id].next_vir_y > 0 && bayren->dataray[id].next_vir_y <= (bayren->the_rows * 32)))
 		// {
@@ -409,12 +413,12 @@ void	casting(t_ray *parzi)
 		// if (id == 0)
 		// 	printf (" init %f\n", parzi->dataray[id].ray_ang);
 		parzi->colur = 0xFFFFFF;
-		if (id == 0 || id == (1440 - 1))
-		{
-			// if (id == 0)
-				// printf (" fata %f\n", parzi->dataray[id].ray_ang);
-			dda (parzi, ((parzi->plays->x_play)) + cos(parzi->dataray[id].ray_ang ) * 790, ((parzi->plays->y_play)) + sin(parzi->dataray[id].ray_ang ) * 790);
-		}
+		// if (id == 0 || id == (1440 - 1))
+		// {
+		// 	// if (id == 0)
+		// 		// printf (" fata %f\n", parzi->dataray[id].ray_ang);
+		// 	dda (parzi, ((parzi->plays->x_play)) + cos(parzi->dataray[id].ray_ang ) * 790, ((parzi->plays->y_play)) + sin(parzi->dataray[id].ray_ang ) * 790);
+		// }
 		// determine_ange (parzi, id);
 		cast_an_ray (parzi, id);
 		// if (id + 1 <= 1439)

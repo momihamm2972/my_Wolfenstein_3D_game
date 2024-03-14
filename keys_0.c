@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:28:57 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/13 07:03:58 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/13 23:51:51 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,33 @@ int	is_ray_hit_wall(t_ray *obj, double x, double y)
 	// i = 0;
 	clm = floor (x / 32);
 	row = floor (y / 32);
+	
+	if (row < obj->the_rows && clm < obj->the_long_line){
+
+		if (!ft_strchr("0NEWS", obj->game_map[row][clm]))
+		{
+			// printf ("##############\t%c\t#####row %d  ######clm  %d######\n", obj->game_map[row][clm], row, clm);
+			return (-1);
+		}
+	}
+	// else÷n (0);
+	return (0);
+}
 	// printf ("444444444\n");
-	if (clm < 0 || row < 0)
-	{
-		printf ("iwa yakhoya l3ziz\n");
-		return (0);
-		clm = 0;
-		row = 0;
-	}
-	if (clm >= obj->the_long_line || row >= obj->the_rows)
-	{
-		printf ("wa fuck\n");
-		return (0);
-		clm = 0;
-		row = 0;
-	}
+	// if (clm < 0  || row < 0 || clm > (obj->the_rows))
+	// {
+	// 	printf ("iwa yakhoya l3ziz\n");
+	// 	return (0);
+	// 	clm = 0;
+	// 	row = 0;
+	// }
+	// if (clm >= obj->the_long_line || row >= obj->the_rows)
+	// {
+	// 	printf ("wa fuck\n");
+	// 	// return (0);
+	// 	clm = 0;
+	// 	row = 0;
+	// }
 	// if (obj->game_map[row][clm] == '+')
 	// {
 	// 	printf ("fuck\n");
@@ -64,14 +76,6 @@ int	is_ray_hit_wall(t_ray *obj, double x, double y)
 	// }
 	// printf ("row %d \t clm %d\n", row, clm);
 	// printf (">>%c\n", obj->game_map[row][clm]);
-	if (!ft_strchr("0NEWS", obj->game_map[row][clm]))
-	{
-		// printf ("##############\t%c\t#####row %d  ######clm  %d######\n", obj->game_map[row][clm], row, clm);
-		return (-1);
-	}
-	// else÷n (0);
-	return (0);
-}
 
 int	is_wall(t_ray *obj, double x, double y)
 {

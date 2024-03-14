@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/13 03:37:26 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/14 00:03:50 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <mlx.h>
 
 # define RAYS 1440
-// # define win_w 1500
+// # define _win_w 1500
 
 typedef struct image
 {

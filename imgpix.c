@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 17:19:57 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/13 03:38:42 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/14 00:05:31 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	put_pix_img(t_img *img, int x, int y, int colur)
 	char	*puting;
 	// int		lenght;
  
-	if (x < 0 || y < 0)
+	if (x < 0 || x >= img->win_w || y < 0 || y >= img->win_h)
 		return ;
 	puting = img->data_addr + (y * img->lenofline + x * (img->intperpixl / 8));
 	// lenght = my_strlen (puting);
