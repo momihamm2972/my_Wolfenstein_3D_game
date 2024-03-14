@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:41:58 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/14 09:20:57 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/14 11:04:05 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@ void	chose_vert_or_horz(t_ray *obj, int id)
 		obj->dataray[id].y_found_wall = obj->dataray[id].vir_wall_hit_y;
 		obj->dataray[id].massafa = obj->dataray[id].vir_massafa;
 		obj->dataray[id].virt = 1;
-		// obj->colur = 0xFF00FF;
-		// if (id == 1439 || id == 0)
-		// 	obj->colur = 0xFFFFFF;
-		// // dda(obj, obj->dataray[id].x_found_wall, obj->dataray[id].y_found_wall);
 	}
 	else
 	{
@@ -41,10 +37,6 @@ void	chose_vert_or_horz(t_ray *obj, int id)
 		obj->dataray[id].y_found_wall = obj->dataray[id].horzwall_hit_y;
 		obj->dataray[id].massafa = obj->dataray[id].hor_massafa;
 		obj->dataray[id].horz = 1;
-		// obj->colur = 0xCC6600;
-		// if (id == 1439 || id == 0)
-		// 	obj->colur = 0xFFFFFF;
-		// dda(obj, obj->dataray[id].x_found_wall, obj->dataray[id].y_found_wall);
 	}
 }
 
@@ -71,32 +63,17 @@ void	casting(t_ray *parzi)
 	}
 }
 
-// void	make_rege(t_ray *obj ,int id)
-// {
-// 	obj->colur = 0xFFFFFF;
-// 	double x = id * 1;
-// 	double y = (860 / 2) - (obj->dataray[id].wall_length / 2);
-// 	while (x < 1)
-// 	{
-// 		y = 0;
-// 		while (y < obj->dataray[id].wall_length)
-// 		{
-// 			put_pix_img (obj->my_image, x, y,
-// 				obj->colur);
-// 			y++;
-// 		}
-// 		x++;
-// 	}
-// }
-
-
-void	make_rege(t_ray *obj , double tol, double ard, int id)
+void	make_rege(t_ray *obj, double tol, double ard, int id)
 {
-	obj->colur = 0xFFFFFF;
-	int i = 0;
-	int j;
-	double x = id * 1;
-	double y = 430 - (obj->dataray[id].wall_length / 2);
+	double	x;
+	double	y;
+	int		i;
+	int		j;
+
+	i = 0;
+	x = id * 1;
+	y = 430 - (obj->dataray[id].wall_length / 2);
+	obj->colur = 0x000099;
 	while (i < ard)
 	{
 		j = 0;
@@ -109,14 +86,41 @@ void	make_rege(t_ray *obj , double tol, double ard, int id)
 		i++;
 	}
 }
-void	become_3D(t_ray *obj)
-{
-	int		id = 0;
-	// double	wall_length;
 
+void	ceiling_floor(t_ray *obj)
+{
+	int	indx;
+	int	rows;
+
+	indx = 0;
+	while (indx < 1440)
+	{
+		rows = 0;
+		while (rows < 860)
+		{
+			if (rows <= (860 / 2))
+				obj->colur = obj->ceiling;
+			else
+				obj->colur = obj->f_flor;
+			put_pix_img (obj->my_image, indx, rows, obj->colur);
+			rows++;
+		}
+		indx++;
+	}
+}
+
+void	become_3d(t_ray *obj)
+{
+	int		id;
+	double	corect_lenght;
+
+	id = 0;
 	while (id < 1440)
 	{
-		obj->dataray[id].wall_length = (obj->plays->tile / obj->dataray[id].massafa) * obj->dest_por_wall;
+		corect_lenght = obj->dataray[id].massafa
+			* cos (obj->dataray[id].ray_ang - obj->plays->rot_ang);
+		obj->dataray[id].wall_length = (obj->plays->tile / corect_lenght)
+			* obj->dest_por_wall;
 		make_rege(obj, obj->dataray[id].wall_length, 1, id);
 		id++;
 	}
@@ -124,33 +128,39 @@ void	become_3D(t_ray *obj)
 
 int	ft_again(t_ray *obj)
 {
-	int		row;
-	int		clm;
-
-	row = 0;
 	creat_img (obj);
-	// while (obj->game_map[row])
-	// {
-		clm = 0;
-	// 	while (obj->game_map[row][clm])
-	// 	{
-	// 		if (obj->game_map[row][clm] == '1')
-	// 			make_square(row, clm, obj);
-	// 		else if (obj->game_map[row][clm] == '+')
-	// 			make_square (row, clm, obj);
-	// 		clm++;
-	// 	}
-	// obj->colur = 0xFFFFFF;
-	// 			make_rege (obj,220, 6 );
-	// obj->colur = 0x99FF33;
-	// 			make_rege (obj,20, 5 );
-	// 	row++;
-	// }
-	// obj->colur = 0x00FF1A;
 	casting(obj);
-	// draw_line (obj);
-	become_3D (obj);
+	ceiling_floor (obj);
+	become_3d (obj);
 	mlx_put_image_to_window (obj->start, obj->window,
 		obj->my_image->mlx_img, 0, 0);
 	return (0);
 }
+
+// int	ft_again(t_ray *obj)
+// {
+// 	int		row;
+// 	int		clm;
+
+// 	row = 0;
+// 	creat_img (obj);
+// 	while (obj->game_map[row])
+// 	{
+// 		clm = 0;
+// 		while (obj->game_map[row][clm])
+// 		{
+// 			if (obj->game_map[row][clm] == '1')
+// 				make_square(row, clm, obj);
+// 			else if (obj->game_map[row][clm] == '+')
+// 				make_square (row, clm, obj);
+// 			clm++;
+// 		}
+// 		row++;
+// 	}
+// 	obj->colur = 0x00FF1A;
+// 	casting(obj);
+// 	draw_line (obj);
+// 	mlx_put_image_to_window (obj->start, obj->window,
+// 		obj->my_image->mlx_img, 0, 0);
+// 	return (0);
+// }

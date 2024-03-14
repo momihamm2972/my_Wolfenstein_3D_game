@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/14 08:30:24 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/14 11:16:04 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ typedef struct ray
 	int				the_long_line;
 	int				the_rows;
 	int				rad;
+	int				ceiling;
+	int				f_flor;
 	double			window_width;
 	double			window_height;
 	double			dest_por_wall;

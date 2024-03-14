@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 01:58:36 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/14 08:27:27 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/14 10:43:15 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	init_player(t_ray *ready, t_cub3d *usef)
 	ready->my_image->win_w = ready->the_long_line * 32;
 	ready->my_image->win_h = ready->the_rows * 32;
 	ready->dest_por_wall = (1440 / 2) / tan (ready->plays->f_o_v / 2);
+	ready->ceiling = usef->ceiling_color;
+	ready->f_flor = usef->floor_color;
 }
 
 void	init_cast(t_ray *starlight)
