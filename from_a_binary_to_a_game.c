@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:41:58 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/14 11:04:05 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/16 08:27:51 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ void	determine_ange(t_ray *jackboys, int id)
 void	chose_vert_or_horz(t_ray *obj, int id)
 {
 	calcul_hor_and_ver_dessetens (obj, id);
+	obj->colur = 0xFFFFFF;
 	if (obj->dataray[id].hor_massafa > obj->dataray[id].vir_massafa)
 	{
 		obj->dataray[id].x_found_wall = obj->dataray[id].vir_wall_hit_x;
 		obj->dataray[id].y_found_wall = obj->dataray[id].vir_wall_hit_y;
 		obj->dataray[id].massafa = obj->dataray[id].vir_massafa;
 		obj->dataray[id].virt = 1;
+		dda (obj, obj->dataray[id].x_found_wall, obj->dataray[id].y_found_wall);
 	}
 	else
 	{
@@ -37,6 +39,7 @@ void	chose_vert_or_horz(t_ray *obj, int id)
 		obj->dataray[id].y_found_wall = obj->dataray[id].horzwall_hit_y;
 		obj->dataray[id].massafa = obj->dataray[id].hor_massafa;
 		obj->dataray[id].horz = 1;
+		dda (obj, obj->dataray[id].x_found_wall, obj->dataray[id].y_found_wall);
 	}
 }
 
@@ -48,81 +51,18 @@ void	cast_an_ray(t_ray *bayren, int id)
 
 void	casting(t_ray *parzi)
 {
-	int	id;
-
-	id = 0;
+	parzi->id = 0;
 	init_cast (parzi);
-	parzi->dataray[id].ray_ang = parzi->plays->rot_ang;
-	parzi->dataray[id].ray_ang -= parzi->plays->f_o_v / 2;
-	while (id < 1440)
+	parzi->dataray[parzi->id].ray_ang = parzi->plays->rot_ang;
+	parzi->dataray[parzi->id].ray_ang -= parzi->plays->f_o_v / 2;
+	while (parzi->id < RAYS_WINDOW_WIDTH)
 	{
-		cast_an_ray (parzi, id);
-		parzi->dataray[id + 1].ray_ang = parzi->dataray[id].ray_ang ;
-		id++;
-		parzi->dataray[id].ray_ang += parzi->plays->f_o_v / 1440;
-	}
-}
-
-void	make_rege(t_ray *obj, double tol, double ard, int id)
-{
-	double	x;
-	double	y;
-	int		i;
-	int		j;
-
-	i = 0;
-	x = id * 1;
-	y = 430 - (obj->dataray[id].wall_length / 2);
-	obj->colur = 0x000099;
-	while (i < ard)
-	{
-		j = 0;
-		while (j < tol)
-		{
-			put_pix_img (obj->my_image, i + x, j + y,
-				obj->colur);
-			j++;
-		}
-		i++;
-	}
-}
-
-void	ceiling_floor(t_ray *obj)
-{
-	int	indx;
-	int	rows;
-
-	indx = 0;
-	while (indx < 1440)
-	{
-		rows = 0;
-		while (rows < 860)
-		{
-			if (rows <= (860 / 2))
-				obj->colur = obj->ceiling;
-			else
-				obj->colur = obj->f_flor;
-			put_pix_img (obj->my_image, indx, rows, obj->colur);
-			rows++;
-		}
-		indx++;
-	}
-}
-
-void	become_3d(t_ray *obj)
-{
-	int		id;
-	double	corect_lenght;
-
-	id = 0;
-	while (id < 1440)
-	{
-		corect_lenght = obj->dataray[id].massafa
-			* cos (obj->dataray[id].ray_ang - obj->plays->rot_ang);
-		obj->dataray[id].wall_length = (obj->plays->tile / corect_lenght)
-			* obj->dest_por_wall;
-		make_rege(obj, obj->dataray[id].wall_length, 1, id);
-		id++;
+		cast_an_ray (parzi, parzi->id);
+		parzi->dataray[parzi->id + 1].ray_ang
+			= parzi->dataray[parzi->id].ray_ang ;
+		parzi->id++;
+		parzi->dataray[parzi->id].ray_ang += parzi->plays->f_o_v
+			/ RAYS_WINDOW_WIDTH;
 	}
 }
 

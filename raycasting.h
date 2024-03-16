@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/14 11:16:04 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/16 08:24:38 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include "cub3d.h"
 # include <mlx.h>
 
-# define RAYS 1440
+# define RAYS_WINDOW_WIDTH 1440
+# define WINDOW_HEIGHT 860
 
 typedef struct image
 {
@@ -60,7 +61,10 @@ typedef struct player
 {
 	int		turn_d;
 	int		walk_d;
+	int		left_walk;
+	int		right_walk;
 	int		num_of_rays;
+	double	fake_angle;
 	double	x_play;
 	double	x_pixels;
 	double	y_pixels;
@@ -101,16 +105,17 @@ typedef struct ray
 	int				colur;
 	int				the_long_line;
 	int				the_rows;
-	int				rad;
+	// int				rad;
 	int				ceiling;
 	int				f_flor;
+	int				id;
 	double			window_width;
 	double			window_height;
 	double			dest_por_wall;
 	t_img			*my_image;
 	t_play			*plays;
 	t_dda			*algo;
-	t_cast			dataray[RAYS];
+	t_cast			dataray[RAYS_WINDOW_WIDTH];
 }	t_ray;
 
 /******************************** RAYCASTING **********************************/
@@ -135,6 +140,11 @@ void	init_cast(t_ray *starlight);
 void	init_ptr(t_ray *parzi, int id);
 void	ft_draw(t_ray *object, t_play *parzi);
 void	draw_zero(t_ray *obj, t_play *parzi);
+void	right(t_ray *obj);
+void	left(t_ray *obj);
+void	make_rege(t_ray *obj, double tol, double ard, int id);
+void	ceiling_floor(t_ray *obj);
+void	become_3d(t_ray *obj);
 int		check_is_player(t_play *obj, char c);
 int		close_the_win(void);
 int		ft_move(int events, void *object);

@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 09:39:39 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/14 02:10:00 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/16 08:22:41 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	creat_img(t_ray *obj)
 	mlx_clear_window (obj->start, obj->window);
 	mlx_destroy_image (obj->start, obj->my_image->mlx_img);
 	make_valus(obj->plays, obj);
-	obj->my_image->mlx_img = mlx_new_image (obj->start, obj->the_long_line * 32,
-			obj->the_rows * 32);
+	obj->my_image->mlx_img = mlx_new_image (obj->start, RAYS_WINDOW_WIDTH,
+			WINDOW_HEIGHT);
 	obj->my_image->data_addr = mlx_get_data_addr (obj->my_image->mlx_img,
 			&obj->my_image->intperpixl, &obj->my_image->lenofline,
 			&obj->my_image->end);

@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/03/16 05:01:03 by momihamm          #+#    #+#              #
+#    Updated: 2024/03/16 05:01:18 by momihamm         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = cub3D
 LIB = cub3d.h raycasting.h
 Minilibx = libmlx.a
@@ -23,6 +35,8 @@ SRCS =	parsing.c \
 		directions.c \
 		init_my_vars.c \
 		press_and_reless.c \
+		special_moves.c \
+		become_3D.c	\
 
 OBJS = ${SRCS:.c=.o}
 CC = cc
