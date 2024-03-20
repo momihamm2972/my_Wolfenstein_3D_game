@@ -19,5 +19,5 @@ void	put_pix_img(t_img *img, int x, int y, int colur)
 	if (x < 0 || x >= RAYS_WINDOW_WIDTH || y < 0 || y >= WINDOW_HEIGHT)
 		return ;
 	puting = img->data_addr + (y * img->lenofline + x * (img->intperpixl / 8));
-	*(int *) puting = colur;
+	*(unsigned int *) puting = colur;
 }

@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/16 08:24:38 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/20 03:03:46 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 # define RAYCASTING_H
 
 # include "cub3d.h"
+# include <stdbool.h>
 # include <mlx.h>
 
 # define RAYS_WINDOW_WIDTH 1440
 # define WINDOW_HEIGHT 860
+# define GRID_SIZE 64
 
 typedef struct image
 {
@@ -26,6 +28,8 @@ typedef struct image
 	int		intperpixl;
 	int		lenofline;
 	int		end;
+	int		x;
+	int		y;
 	double	win_w;
 	double	win_h;
 }	t_img;
@@ -34,10 +38,10 @@ typedef struct casting
 {
 	double	first_hit_x;
 	double	first_hit_y;
-	double	is_up;
-	double	is_down;
-	double	is_left;
-	double	is_right;
+	bool	is_up;
+	bool	is_down;
+	bool	is_left;
+	bool	is_right;
 	double	hor_massafa;
 	double	vir_massafa;
 	double	horzwall_hit_x;
@@ -53,8 +57,8 @@ typedef struct casting
 	double	massafa;
 	double	ray_ang;
 	double	wall_length;
-	int		virt;
-	int		horz;
+	bool	virt;
+	bool	horz;
 }	t_cast;
 
 typedef struct player
@@ -112,6 +116,12 @@ typedef struct ray
 	double			window_width;
 	double			window_height;
 	double			dest_por_wall;
+	t_img    		*north_texture;
+    t_img    		*south_texture;
+    t_img    		*west_texture;
+    t_img    		*east_texture;
+	t_img			*right_texture;
+	t_cub3d			*cub3d;
 	t_img			*my_image;
 	t_play			*plays;
 	t_dda			*algo;

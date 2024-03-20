@@ -6,35 +6,57 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 05:00:34 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/16 08:22:41 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/20 03:05:08 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-void	make_rege(t_ray *obj, double tol, double ard, int id)
-{
-	double	x;
-	double	y;
-	int		i;
-	int		j;
 
-	i = 0;
-	x = id * 1;
-	y = 430 - (obj->dataray[id].wall_length / 2);
-	obj->colur = 0x000099;
-	while (i < ard)
-	{
-		j = 0;
-		while (j < tol)
-		{
-			put_pix_img (obj->my_image, i + x, y + j,
-				obj->colur);
-			j++;
-		}
-		i++;
-	}
+
+int    get_pixel_color(t_img *data, int x, int y)
+{
+    char    *dst;
+
+    dst = data->data_addr + (y * data->lenofline + x * (data->intperpixl / 8));
+    return (*(unsigned int *)dst);
 }
+
+// void	make_rege(t_ray *obj, double tol, double ard, int id)
+// {
+// 	double	x;
+// 	double	y;
+// 	int		i;
+// 	int		j;
+
+// 	i = 0;
+// 	x = id * 1;
+// 	y = (WINDOW_HEIGHT / 2) - (obj->dataray[id].wall_length / 2);
+// 	obj->colur = 0x000099;
+
+
+// 	int textureOffsetX;
+// 	if (obj->dataray[id].virt)
+// 		textureOffsetX = (int)obj->dataray[id].y_found_wall % GRID_SIZE;
+// 	else
+// 		textureOffsetX = (int)obj->dataray[id].x_found_wall % GRID_SIZE;
+// 	while (i < ard)
+// 	{
+// 		j = 0;
+// 		while (j < tol)
+// 		{
+// 			int distanceFromTop = y + (obj->dataray[id].wall_length / 2) - (WINDOW_HEIGHT / 2);
+// 			int textureOffsetY = distanceFromTop * ((float)GRID_SIZE / obj->dataray[id].wall_length);
+// 			unsigned int color  = get_color(obj, textureOffsetX, textureOffsetY);
+// 			// printf ("%d\n", textureOffsetY);
+// 			put_pix_img (obj->my_image, i + x, y + j,
+// 				color);
+// 			j++;
+// 			y++;
+// 		}
+// 		i++;
+// 	}
+// }
 
 void	ceiling_floor(t_ray *obj)
 {
@@ -58,11 +80,61 @@ void	ceiling_floor(t_ray *obj)
 	}
 }
 
+int select_texture(t_ray *obj, int id)
+{
+	// printf("%d obj->dataray[id].is_up\n", is_ray_down (obj->dataray[id].ray_ang));
+	// printf("%d obj->dataray[id].is_down\n", obj->dataray[id].is_down);
+	// printf("%d obj->dataray[id].is_left\n", obj->dataray[id].is_left);
+	// printf("%d obj->dataray[id].is_right\n", obj->dataray[id].is_right);
+	// printf("%d obj->dataray[id].horz\n", obj->dataray[id].horz);
+	// printf("%d obj->dataray[id].virt\n", obj->dataray[id].virt);
+	obj->dataray[id].is_up = is_ray_up(obj->dataray[id].ray_ang);
+	obj->dataray[id].is_down = is_ray_down(obj->dataray[id].ray_ang);
+	obj->dataray[id].is_left = is_ray_left(obj->dataray[id].ray_ang);
+	obj->dataray[id].is_right = is_ray_right(obj->dataray[id].ray_ang);
+	printf ("kmi\n");
+	if (obj->dataray[id].is_up == 0 && obj->dataray[id].horz == 1)
+	{
+		puts("north");
+		obj->right_texture->data_addr = obj->north_texture->data_addr;
+		obj->right_texture->lenofline = obj->north_texture->lenofline;
+		obj->right_texture->intperpixl = obj->north_texture->intperpixl;
+		return 1;
+	}
+	else if (!obj->dataray[id].is_down && obj->dataray[id].horz == 1)
+	{
+		puts("south");
+			obj->right_texture->data_addr = obj->south_texture->data_addr;
+			obj->right_texture->lenofline = obj->south_texture->lenofline;
+			obj->right_texture->intperpixl = obj->south_texture->intperpixl;
+		return 1;
+	
+	}
+	else if (!obj->dataray[id].is_right && obj->dataray[id].virt == 1)
+	{
+		puts("west");
+		obj->right_texture->data_addr = obj->west_texture->data_addr;
+		obj->right_texture->lenofline = obj->west_texture->lenofline;
+		obj->right_texture->intperpixl = obj->west_texture->intperpixl;
+		return 1;
+	}
+	else if (obj->dataray[id].is_left == 0 && obj->dataray[id].virt == 1)
+	{
+		puts("east");
+			obj->right_texture->data_addr = obj->east_texture->data_addr;
+			obj->right_texture->lenofline = obj->east_texture->lenofline;
+			obj->right_texture->intperpixl = obj->east_texture->intperpixl;
+		return 1;
+	
+	}
+	return 0;
+}
+
 void	become_3d(t_ray *obj)
 {
 	int		id;
 	double	corect_lenght;
-
+unsigned int color;
 	id = 0;
 	while (id < RAYS_WINDOW_WIDTH)
 	{
@@ -72,7 +144,34 @@ void	become_3d(t_ray *obj)
 			* obj->dest_por_wall;
 		if (obj->dataray[id].wall_length > RAYS_WINDOW_WIDTH)
 			obj->dataray[id].wall_length = RAYS_WINDOW_WIDTH;
-		make_rege(obj, obj->dataray[id].wall_length, 0.5, id);
+		
+        int wallTopPixel = (WINDOW_HEIGHT / 2) - (obj->dataray[id].wall_length / 2);
+        wallTopPixel = wallTopPixel < 0 ? 0 : wallTopPixel;
+
+        int wallBottomPixel = (WINDOW_HEIGHT / 2) + (obj->dataray[id].wall_length / 2);
+        wallBottomPixel = wallBottomPixel > WINDOW_HEIGHT ? WINDOW_HEIGHT : wallBottomPixel;
+
+		int y = (WINDOW_HEIGHT / 2) - (obj->dataray[id].wall_length / 2);
+		// obj->colur = 0x000099;
+
+
+	int textureOffsetX;
+	if (obj->dataray[id].virt)
+		textureOffsetX = (int)obj->dataray[id].y_found_wall % GRID_SIZE;
+	else
+		textureOffsetX = (int)obj->dataray[id].x_found_wall % GRID_SIZE;
+	int a = select_texture(obj, id);
+	for (int y  = wallTopPixel; y < wallBottomPixel; y++)
+	{
+
+			int distanceFromTop = y + (obj->dataray[id].wall_length / 2) - (WINDOW_HEIGHT / 2);
+			int textureOffsetY = distanceFromTop * ((double)GRID_SIZE / obj->dataray[id].wall_length);
+			if (a)
+				color  = get_pixel_color(obj->right_texture, textureOffsetX, textureOffsetY);
+			else
+				color = 0x0;
+			put_pix_img (obj->my_image, id, y, color);
+	}
 		id++;
 	}
 }
