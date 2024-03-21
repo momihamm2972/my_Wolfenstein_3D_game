@@ -6,7 +6,7 @@
 #    By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/16 05:01:03 by momihamm          #+#    #+#              #
-#    Updated: 2024/03/16 05:01:18 by momihamm         ###   ########.fr        #
+#    Updated: 2024/03/21 07:21:48 by momihamm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ SRCS =	parsing.c \
 
 OBJS = ${SRCS:.c=.o}
 CC = cc
-CFLAGS =#-Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 
 all : ${NAME}
 

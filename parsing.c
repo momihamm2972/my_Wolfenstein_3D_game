@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 18:26:34 by yonadry           #+#    #+#             */
-/*   Updated: 2024/02/11 01:49:50 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/21 07:22:03 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -316,7 +316,7 @@ void fun()
 }
 void read_map_elements(t_cub3d *cub3d)
 {
-    int i = 0;
+    // int i = 0;
     char **read;
 
     // atexit(fun);
@@ -332,17 +332,17 @@ void read_map_elements(t_cub3d *cub3d)
     free_strs(read, 0);
     parse_map(cub3d);
     is_txt_avail(cub3d);
-    printf("%d\n\n", cub3d->count);
-    while (cub3d->map[i])
-    {
-        printf("%s\n", cub3d->map[i]);
-        i++;
-    }
-    printf("\n\n\n");
-    printf("Ceiling color: %X\n", cub3d->ceiling_color);
-    printf("Floor color: %X\n", cub3d->floor_color);
-    printf("NO : %s\n", cub3d->north_texture);
-    printf("SO : %s\n", cub3d->south_texture);
-    printf("WE : %s\n", cub3d->west_texture);
-    printf("EA : %s\n", cub3d->east_texture);
+    // printf("%d\n\n", cub3d->count);
+    // while (cub3d->map[i])
+    // {
+    //     printf("%s\n", cub3d->map[i]);
+    //     i++;
+    // }
+    // printf("\n\n\n");
+    // printf("Ceiling color: %X\n", cub3d->ceiling_color);
+    // printf("Floor color: %X\n", cub3d->floor_color);
+    // printf("NO : %s\n", cub3d->north_texture);
+    // printf("SO : %s\n", cub3d->south_texture);
+    // printf("WE : %s\n", cub3d->west_texture);
+    // printf("EA : %s\n", cub3d->east_texture);
 }
