@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:36:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/20 03:03:46 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/23 11:09:07 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ typedef struct player
 	double	y_move;
 	double	finalya_h_wall;
 	double	finalya_v_wall;
+	double	i_x;
+	double	j_y;
 }	t_play;
 
 typedef struct dda
@@ -103,39 +105,40 @@ typedef struct dda
 
 typedef struct ray
 {
-	void			*start;
-	void			*window;
-	char			**game_map;
-	int				colur;
-	int				the_long_line;
-	int				the_rows;
-	// int				rad;
-	int				ceiling;
-	int				f_flor;
-	int				id;
-	double			window_width;
-	double			window_height;
-	double			dest_por_wall;
-	t_img    		*north_texture;
-    t_img    		*south_texture;
-    t_img    		*west_texture;
-    t_img    		*east_texture;
-	t_img			*right_texture;
-	t_cub3d			*cub3d;
-	t_img			*my_image;
-	t_play			*plays;
-	t_dda			*algo;
-	t_cast			dataray[RAYS_WINDOW_WIDTH];
+	void	*start;
+	void	*window;
+	char	**game_map;
+	int		colur;
+	int		the_long_line;
+	int		the_rows;
+	int		ceiling;
+	int		f_flor;
+	int		id;
+	double	window_width;
+	double	window_height;
+	double	dest_por_wall;
+	t_img	*north_texture;
+	t_img	*south_texture;
+	t_img	*west_texture;
+	t_img	*east_texture;
+	t_img	*right_texture;
+	t_cub3d	*cub3d;
+	t_img	*my_image;
+	t_play	*plays;
+	t_dda	*algo;
+	t_cast	dataray[RAYS_WINDOW_WIDTH];
 }	t_ray;
 
 /******************************** RAYCASTING **********************************/
+void	free_all(t_ray *strahl);
+void	open_textures(t_ray *strahl);
 void	the_longest_line(t_cub3d *usef, t_ray *my_struct);
 void	init_player(t_ray *ready, t_cub3d *usef);
 void	put_pix_img(t_img *img, int x, int y, int colur);
 void	get_curnt_posi(t_play *parzival, t_cub3d *yous);
 void	dda(t_ray *obj, double x1, double y1);
 void	ft_draw(t_ray *object, t_play *parzival);
-void	mlx_art(t_cub3d *usef, t_ray *strahl, t_play *parzival);
+void	mlx_art(t_cub3d *usef, t_ray *strahl);
 void	make_valus(t_play *blanka, t_ray *obj);
 void	make_square(int row, int clm, t_ray *object);
 void	draw_line(t_ray *obj);
@@ -155,8 +158,13 @@ void	left(t_ray *obj);
 void	make_rege(t_ray *obj, double tol, double ard, int id);
 void	ceiling_floor(t_ray *obj);
 void	become_3d(t_ray *obj);
+void	up_and_down(t_play *obj, t_ray *data);
+void	eastorwestfoodisthebest(t_ray *obj);
+void	draw_wall(t_ray *obj, int id, int walltoppixel, int wallbottompixel);
+void	become_3d(t_ray *obj);
+void	norm_rot_angle(double *rot);
 int		check_is_player(t_play *obj, char c);
-int		close_the_win(void);
+int		close_the_win(t_ray *obj);
 int		ft_move(int events, void *object);
 int		ft_again(t_ray *obj);
 int		ft_mover(int events, void *object);
@@ -169,6 +177,8 @@ int		is_ray_left(double ray_angle);
 int		vir_hit(t_ray *bayren, int id);
 int		hor_hit(t_ray *bayren, int id);
 int		check_is_player(t_play *obj, char c);
+int		select_texture(t_ray *obj, int id);
+int		select_texture(t_ray *obj, int id);
 double	deg2rad(double degrees);
 double	rad2deg(double radians);
 /******************************************************************************/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
+/*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 18:26:12 by yonadry           #+#    #+#             */
-/*   Updated: 2024/01/07 18:26:18 by yonadry          ###   ########.fr       */
+/*   Updated: 2024/03/23 11:12:49 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	*ft_calloc(size_t count, size_t size)
 {
 	char	*mem;
-	size_t	i;
+	int		i;
 
 	i = -1;
 	mem = malloc(count * size);
 	if (!mem)
 		return (NULL);
-	while (++i < count * size)
+	while (++i < (int)(count * size))
 		mem[i] = '\0';
 	return (mem);
 }

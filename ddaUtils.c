@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 19:41:21 by momihamm          #+#    #+#             */
-/*   Updated: 2024/02/19 13:30:52 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/23 09:58:13 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ void	get_curnt_posi(t_play *parzival, t_cub3d *yous)
 		{
 			if (check_is_player(parzival, yous->map[row][clm]) == 1)
 			{
-				parzival->x_play = ((double) clm * GRID_SIZE) + 1;
-				parzival->y_play = ((double) row * GRID_SIZE) + 1;
+				parzival->x_play = (double) clm * GRID_SIZE;
+				parzival->y_play = (double) row * GRID_SIZE;
+				parzival->x_play += 8;
+				parzival->y_play += 8;
 				return ;
 			}
 			clm++;

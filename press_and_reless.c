@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 02:12:07 by momihamm          #+#    #+#             */
-/*   Updated: 2024/03/16 03:35:34 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/03/23 08:58:21 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_mover(int events, void *object)
 
 	obj = (t_ray *)object;
 	if (events == 53)
-		close_the_win ();
+		close_the_win (obj);
 	if (events == 124)
 		obj->plays->turn_d = 0;
 	if (events == 123)
@@ -40,7 +40,7 @@ int	ft_move(int events, void *object)
 
 	obj = (t_ray *) object;
 	if (events == 53)
-		close_the_win ();
+		close_the_win (obj);
 	if (events == 124)
 		obj->plays->turn_d = 1;
 	if (events == 123)

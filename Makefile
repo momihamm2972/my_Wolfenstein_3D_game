@@ -6,7 +6,7 @@
 #    By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/16 05:01:03 by momihamm          #+#    #+#              #
-#    Updated: 2024/03/21 07:21:48 by momihamm         ###   ########.fr        #
+#    Updated: 2024/03/23 11:26:47 by momihamm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,10 +37,14 @@ SRCS =	parsing.c \
 		press_and_reless.c \
 		special_moves.c \
 		become_3D.c	\
+		open_textures.c \
+		parsing_1.c \
+		parsing_2.c \
+		parsing_3.c \
 
 OBJS = ${SRCS:.c=.o}
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS = -Wextra -Wall -Werror
 
 all : ${NAME}
 
